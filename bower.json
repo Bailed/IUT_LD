@@ -1,0 +1,22 @@
+{
+  "name": "bower",
+  "version": "1.0",
+  "authors": [
+    "Bailed <besson.maxime@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-resource": "*",
+    "bootstrap": "*",
+    "angular-route": "*",
+    "pickadate": "~3.5.5"
+  }
+}
