@@ -4,6 +4,8 @@
 	<meta charset="UTF-8">
 	<title>IUT_LD - GH PAGES</title>
 	<link rel="stylesheet" href="js/libs/bootstrap/dist/css/bootstrap.min.css">	
+	<link rel="stylesheet" href="js/libs/pickadate/lib/themes/default.css">	
+	<link rel="stylesheet" href="js/libs/pickadate/lib/themes/default.date.css">	
 </head>
 	<body>
 		<div class="container">
@@ -13,9 +15,14 @@
 				<p>Ceci est un paragraphe</p>
 			</div>
 			<div class="cold-md-6">
+				<div class="date">
+					<input type="email" placeholder="date" id="datepicker">
+				</div>
 			</div>
 		</div>
 		<script src="js/libs/jquery/dist/jquery.min.js"></script>
+		<script src="js/libs/pickadate/lib/picker.js"></script>	
+		<script src="js/libs/pickadate/lib/picker.date.js"></script>		
 		<script>
 		(function($){
 			$('#datepicker').pickadate();
