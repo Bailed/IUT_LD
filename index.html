@@ -4,30 +4,58 @@
 	<meta charset="UTF-8">
 	<title>IUT_LD - GH PAGES</title>
 	<link rel="stylesheet" href="js/libs/bootstrap/dist/css/bootstrap.min.css">	
-	<link rel="stylesheet" href="js/libs/pickadate/lib/themes/default.css">	
-	<link rel="stylesheet" href="js/libs/pickadate/lib/themes/default.date.css">	
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/default.css" />
+	<link rel="stylesheet" type="text/css" href="css/component.css" />
+	<script src="js/modernizr.custom.js"></script>	
 </head>
 	<body>
-		<div class="container">
-			<div class="col-md-6">
-				<h1>Ceci est un h1</h1>
-				<h2>Ceci est un h2</h2>
-				<p>Ceci est un paragraphe</p>
+		<nav class="navbar navbar-default">
+  			<div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">IUT Nantes Informatique - Linked Data</a>
+	</div>
+  	</nav>
+    		</div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+  <div class="main clearfix">
+				<form id="nl-form" class="nl-form">
+					Je souhaite ajouter 
+					<select>
+						<option value="1" selected>un étudiant</option>
+						<option value="2">un professeur</option>
+						<option value="3">une matière</option>
+						<option value="4">un groupe</option>
+						<option value="2">une promotion</option>
+					</select> à
+					<select>
+						<option value="1" selected>un groupe</option>
+						<option value="2">une promotion</option>
+						<option value="3">un professeur</option>
+						<option value="4">département informatique</option>
+					</select>
+						<button class="nl-submit text-center" type="submit">Envoyer ma demande</button>
+					<div class="nl-overlay"></div>
+				</form>
 			</div>
-			<div class="cold-md-6">
-				<div class="date">
-					<input type="email" placeholder="date" id="datepicker">
-				</div>
-			</div>
-		</div>
-		<script src="js/libs/jquery/dist/jquery.min.js"></script>
-		<script src="js/libs/pickadate/lib/picker.js"></script>	
-		<script src="js/libs/pickadate/lib/picker.date.js"></script>		
-		<script>
-		(function($){
-			$('#datepicker').pickadate();
-		})(jQuery);
-		</script>
 
+		<script src="js/libs/jquery/dist/jquery.min.js"></script>
+		<script src="js/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+        $(document).ready(function () {
+            $('.dropdown-toggle').dropdown();
+        });
+   		</script>
+   		<script src="js/nlform.js"></script>
+		<script>
+			var nlform = new NLForm( document.getElementById( 'nl-form' ) );
+		</script>
 	</body>
 </html>
