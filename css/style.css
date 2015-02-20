@@ -1,4 +1,29 @@
 body {
-	
+	padding-top: 100px;	
 	padding-bottom: 70px;
+}
+
+.first-header {
+	padding-top: 70px;
+}
+
+.team-member{
+	text-align: center;
+}
+
+.member {
+	text-align: center;
+}
+
+.bloc {
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+
+.navbar-right {
+	margin-right: 40px;
+}
+
+legend {
+	color: #fff;
 }
