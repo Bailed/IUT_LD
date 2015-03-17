@@ -44,18 +44,18 @@ class ControleurCreation {
 
 	// créer un professeur
 	public function creerProfesseur() {  
-		if (isset($_POST['NomProfesseur'])) {
+		if (isset($_POST['Nom_Prenom'])) {
 
 	        $graph = new EasyRdf_Graph();
 
 
 	        $graph = new EasyRdf_Graph();
-	        $graph->addResource("http://localhost/IUT_LD/test/ressource/".$_POST['NomProfesseur'], "rdf:type", "professeur:Professeur");
-	        $graph->addLiteral("http://localhost/IUT_LD/test/ressource/".$_POST['NomProfesseur'], "professeur:nom", $_POST['nom']);
-	        $graph->addLiteral("http://localhost/IUT_LD/test/ressource/".$_POST['NomProfesseur'], "professeur:prenom", $_POST['prenom']);
-	        $graph->addLiteral("http://localhost/IUT_LD/test/ressource/".$_POST['NomProfesseur'], "professeur:matiere", $_POST['matiere']);
-	        $graph->addLiteral("http://localhost/IUT_LD/test/ressource/".$_POST['NomProfesseur'], "professeur:departement", $_POST['departement']);
-	        $graph->add("http://localhost/IUT_LD/test/ressource/".$_POST['NomProfesseur'], "rdfs:label", $_POST['NomProfesseur']);
+	        $graph->addResource("http://localhost/IUT_LD/test/ressource/".$_POST['Nom_Prenom'], "rdf:type", "professeur:Professeur");
+	        $graph->addLiteral("http://localhost/IUT_LD/test/ressource/".$_POST['Nom_Prenom'], "professeur:nom", $_POST['nom']);
+	        $graph->addLiteral("http://localhost/IUT_LD/test/ressource/".$_POST['Nom_Prenom'], "professeur:prenom", $_POST['prenom']);
+	        $graph->addLiteral("http://localhost/IUT_LD/test/ressource/".$_POST['Nom_Prenom'], "professeur:matiere", $_POST['matiere']);
+	        $graph->addLiteral("http://localhost/IUT_LD/test/ressource/".$_POST['Nom_Prenom'], "professeur:departement", $_POST['departement']);
+	        $graph->add("http://localhost/IUT_LD/test/ressource/".$_POST['Nom_Prenom'], "rdfs:label", $_POST['Nom_Prenom']);
 
 	        # Finally output the graph
 
@@ -64,7 +64,7 @@ class ControleurCreation {
 	            $data = var_export($data, true);
 	        }
 
-		    $file = "ressource/".$_POST['NomProfesseur'].".rdf"; 
+		    $file = "ressource/".$_POST['Nom_Prenom'].".rdf"; 
 
 		    $myfile = fopen($file, "w"); 
 		    fwrite($myfile,$data); 
@@ -194,7 +194,7 @@ class ControleurCreation {
 	            $data = var_export($data, true);
 	        }
 
-		    $file = "ressource/".$_POST['Nom_Etablissement'].".rdf"; 
+		    $file = "ressource/".$_POST['Nom_Ville'].".rdf"; 
 
 		    $myfile = fopen($file, "w"); 
 		    fwrite($myfile,$data); 
