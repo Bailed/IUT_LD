@@ -32,13 +32,21 @@ class ControleurCreation {
 	            $data = var_export($data, true);
 	        }
 
+
 		    $file = "ressource/".$_POST['IdentifiantEtudiant'].".rdf"; 
+		    $dir = scandir("ressource/");
+			foreach ($dir as $name) {
+				if (basename($name, ".rdf") == $_POST['IdentifiantEtudiant']) {
+					echo "<br> Le fichier existe <br>";
+				}
+				else{
+					$myfile = fopen($file, "w"); 
+			    	fwrite($myfile,$data); 
+			    	fclose($myfile);
+				}
+			}
 
-		    $myfile = fopen($file, "w"); 
-		    fwrite($myfile,$data); 
-		    fclose($myfile); 
-
-		    echo "Etudiant crée";  
+			echo "Etudiant crée";  
 	    }
 	}
 
@@ -66,9 +74,17 @@ class ControleurCreation {
 
 		    $file = "ressource/".$_POST['Nom_Prenom'].".rdf"; 
 
-		    $myfile = fopen($file, "w"); 
-		    fwrite($myfile,$data); 
-		    fclose($myfile); 
+		    $dir = scandir("ressource/");
+			foreach ($dir as $name) {
+				if (basename($name, ".rdf") == $_POST['Nom_Prenom']) {
+					echo "<br> Le fichier existe <br>";
+				}
+				else{
+					$myfile = fopen($file, "w"); 
+			    	fwrite($myfile,$data); 
+			    	fclose($myfile);
+				}
+			}
 
 		    echo "Professeur crée";  
 	    }
@@ -97,10 +113,17 @@ class ControleurCreation {
 	        }
 
 		    $file = "ressource/".$_POST['Nom_Annee'].".rdf"; 
-
-		    $myfile = fopen($file, "w"); 
-		    fwrite($myfile,$data); 
-		    fclose($myfile); 
+			$dir = scandir("ressource/");
+			foreach ($dir as $name) {
+				if (basename($name, ".rdf") == $_POST['Nom_Annee']) {
+					echo "<br> Le fichier existe <br>";
+				}
+				else{
+					$myfile = fopen($file, "w"); 
+			    	fwrite($myfile,$data); 
+			    	fclose($myfile);
+				}
+			}
 
 		    echo "Groupe crée";  
 	    }
@@ -129,10 +152,17 @@ class ControleurCreation {
 	        }
 
 		    $file = "ressource/".$_POST['Nom_Annee'].".rdf"; 
-
-		    $myfile = fopen($file, "w"); 
-		    fwrite($myfile,$data); 
-		    fclose($myfile); 
+		    $dir = scandir("ressource/");
+			foreach ($dir as $name) {
+				if (basename($name, ".rdf") == $_POST['Nom_Annee']) {
+					echo "<br> Le fichier existe <br>";
+				}
+				else{
+					$myfile = fopen($file, "w"); 
+			    	fwrite($myfile,$data); 
+			    	fclose($myfile);
+				}
+			} 
 
 		    echo "Promo crée";  
 	    }
@@ -162,10 +192,17 @@ class ControleurCreation {
 	        }
 
 		    $file = "ressource/".$_POST['Nom_Etablissement'].".rdf"; 
-
-		    $myfile = fopen($file, "w"); 
-		    fwrite($myfile,$data); 
-		    fclose($myfile); 
+			$dir = scandir("ressource/");
+			foreach ($dir as $name) {
+				if (basename($name, ".rdf") == $_POST['Nom_Etablissement']) {
+					echo "<br> Le fichier existe <br>";
+				}
+				else{
+					$myfile = fopen($file, "w"); 
+			    	fwrite($myfile,$data); 
+			    	fclose($myfile);
+				}
+			}
 
 		    echo "Departement crée";  
 	    }
@@ -195,10 +232,17 @@ class ControleurCreation {
 	        }
 
 		    $file = "ressource/".$_POST['Nom_Ville'].".rdf"; 
-
-		    $myfile = fopen($file, "w"); 
-		    fwrite($myfile,$data); 
-		    fclose($myfile); 
+			$dir = scandir("ressource/");
+			foreach ($dir as $name) {
+				if (basename($name, ".rdf") == $_POST['Nom_Ville']) {
+					echo "<br> Le fichier existe <br>";
+				}
+				else{
+					$myfile = fopen($file, "w"); 
+			    	fwrite($myfile,$data); 
+			    	fclose($myfile);
+				}
+			}
 
 		    echo "Etablissement crée";  
 	    }
