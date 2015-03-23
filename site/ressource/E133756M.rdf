@@ -5,7 +5,8 @@
 
   <etudiant:Etudiant rdf:about="http://localhost/IUT_LD/site/ressource/E133756M.rdf">
     <etudiant:nom>PICARD</etudiant:nom>
-    <etudiant:prenom>Toto</etudiant:prenom>
+    <etudiant:prenom>Thomas</etudiant:prenom>
+     <etudiant:groupe>groupe2</etudiant:groupe>
     <rdfs:label>E133756M</rdfs:label>
   </etudiant:Etudiant>
 

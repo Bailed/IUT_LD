@@ -3,7 +3,7 @@
          xmlns:etudiant="http://localhost/IUT_LD/test/class/etudiant.rdf"
          xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
 
-  <etudiant:Etudiant rdf:about="http://localhost/IUT_LD/test/ressource/E133756M.rdf">
+  <etudiant:Etudiant rdf:about="http://localhost/IUT_LD/site/ressource/E133756M.rdf">
     <etudiant:nom>PICARD</etudiant:nom>
     <etudiant:prenom>Toto</etudiant:prenom>
     <rdfs:label>E133756M</rdfs:label>

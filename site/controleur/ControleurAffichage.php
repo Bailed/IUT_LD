@@ -19,27 +19,34 @@ class ControleurAffichage {
 
         if ($graph->type() == "etudiant:Etudiant") {
 
+          $id = $graph -> label($uri);
+          $nom = $graph->getLiteral($uri, "etudiant:nom") ;
+          $prenom = $graph->getLiteral($uri, "etudiant:prenom") ;
+          $groupe = $graph->getLiteral($uri, "etudiant:groupe") ;
 
-
-            $etudiant = $graph->resource();
-
-            echo "etudiant charge";  
-
-            $EtudiantJson = array("id" => $etudiant->get('etudiant:id'), "nom" =>  $etudiant->get('etudiant:nom'), "prenom" =>  $etudiant->get('etudiant:prenom'), "groupe" => $etudiant->get('etudiant:groupe') );  
-
-            echo $etudiant->get('etudiant:id');
-           echo  $etudiant->get('etudiant:nom');
-          echo   $etudiant->get('etudiant:prenom');
-          echo   $etudiant->get('etudiant:groupe'); 
-          //  return json_encode($EtudiantJson);  
-           echo $EtudiantJson;  
-           echo json_encode($EtudiantJson);  
+          $EtudiantJson = array('etudiant' => array('id' =>(string) $id, 'nom' => (string) $nom, 'prenom' => (string) $prenom,'groupe' => (string) $groupe )) ;  
+   
+          return json_encode($EtudiantJson);  
 
         } elseif ($graph->type() == 'professeur:Professeur') {
-            $professeur = $graph->resource();
+            $id = $graph -> label($uri);
+            $nom = $graph->getLiteral($uri, "professeur:nom") ;
+            $prenom = $graph->getLiteral($uri, "professeur:prenom") ;
+            $matiere = $graph->getLiteral($uri, "professeur:matiere") ;
+            $departement = $graph->getLiteral($uri, "professeur:departement") ;
+
+            $profJson = array('professeur' => array('id' => $id, 'nom' => $nom, 'prenom' => $prenom, 'matiere' => $matiere, 'departement' => $departement)); 
+
+            return json_encode($profJson);  
 
         } elseif ($graph->type() == 'groupe:Groupe') {
-            $groupe = $graph->resource();
+            $id = $graph -> label($uri);
+            $nom = $graph->getLiteral($uri, "groupe:nom") ;
+            $annee = $graph->getLiteral($uri, "groupe:annee") ;
+            $promo = $graph->getLiteral($uri, "groupe:promo") ;
+            $etudiants = $graph->getLiteral($uri, "groupe:etudiants") ;
+
+
         } elseif ($graph->type() == 'promo:Promo') {
             $promo = $graph->resource();
         } elseif ($graph->type() == 'departement:Departement') {
