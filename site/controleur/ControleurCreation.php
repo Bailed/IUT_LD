@@ -19,7 +19,7 @@ class ControleurCreation {
 	        $graph->addLiteral("http://localhost/IUT_LD/test/ressource/".$_POST['IdentifiantEtudiant'], "etudiant:nom", $_POST['nom']);
 	        $graph->addLiteral("http://localhost/IUT_LD/test/ressource/".$_POST['IdentifiantEtudiant'], "etudiant:prenom", $_POST['prenom']);
 	        $graph->addLiteral("http://localhost/IUT_LD/test/ressource/".$_POST['IdentifiantEtudiant'], "etudiant:id", $_POST['id']);
-	        $graph->addLiteral("http://localhost/IUT_LD/test/ressource/".$_POST['IdentifiantEtudiant'], "etudiant:groupe", $_POST['groupe']);
+	        $graph->addResource("http://localhost/IUT_LD/test/ressource/".$_POST['IdentifiantEtudiant'], "etudiant:groupe",$_POST['groupe']);
 	        $graph->add("http://localhost/IUT_LD/test/ressource/".$_POST['IdentifiantEtudiant'], "rdfs:label", $_POST['IdentifiantEtudiant']);
 
 	        # Finally output the graph
@@ -61,7 +61,7 @@ class ControleurCreation {
 	        $graph->addLiteral("http://localhost/IUT_LD/test/ressource/".$Nom_Prenom, "professeur:nom", $_POST['nom']);
 	        $graph->addLiteral("http://localhost/IUT_LD/test/ressource/".$Nom_Prenom, "professeur:prenom", $_POST['prenom']);
 	        $graph->addLiteral("http://localhost/IUT_LD/test/ressource/".$Nom_Prenom, "professeur:matiere", $_POST['matiere']);
-	        $graph->addLiteral("http://localhost/IUT_LD/test/ressource/".$Nom_Prenom, "professeur:departement", $_POST['departement']);
+	        $graph->addResource("http://localhost/IUT_LD/test/ressource/".$Nom_Prenom, "professeur:departement",$_POST['departement']);
 	        $graph->add("http://localhost/IUT_LD/test/ressource/".$Nom_Prenom, "rdfs:label", $Nom_Prenom);
 
 	        # Finally output the graph
@@ -102,8 +102,8 @@ class ControleurCreation {
 	        $graph->addResource("http://localhost/IUT_LD/test/ressource/".$Nom_Annee, "rdf:type", "groupe:Groupe");
 	        $graph->addLiteral("http://localhost/IUT_LD/test/ressource/".$Nom_Annee, "groupe:nom", $_POST['nom']);
 	        $graph->addLiteral("http://localhost/IUT_LD/test/ressource/".$Nom_Annee, "groupe:annee", $_POST['annee']);
-	        $graph->addLiteral("http://localhost/IUT_LD/test/ressource/".$Nom_Annee, "groupe:promo", $_POST['promo']);
-	        $graph->addLiteral("http://localhost/IUT_LD/test/ressource/".$Nom_Annee, "groupe:etudiants", $_POST['etudiants']);
+	        $graph->addResource("http://localhost/IUT_LD/test/ressource/".$Nom_Annee, "groupe:promo", "http://localhost/IUT_LD/test/ressource/".$_POST['promo']);
+	        $graph->addResource("http://localhost/IUT_LD/test/ressource/".$Nom_Annee, "groupe:etudiants", "http://localhost/IUT_LD/test/ressource/".$_POST['etudiants']);
 	        $graph->add("http://localhost/IUT_LD/test/ressource/".$Nom_Annee, "rdfs:label", $Nom_Annee);
 
 	        # Finally output the graph
@@ -143,8 +143,8 @@ class ControleurCreation {
 	        $graph->addResource("http://localhost/IUT_LD/test/ressource/".$Nom_Annee, "rdf:type", "promo:Promo");
 	        $graph->addLiteral("http://localhost/IUT_LD/test/ressource/".$Nom_Annee, "promo:nom", $_POST['nom']);
 	        $graph->addLiteral("http://localhost/IUT_LD/test/ressource/".$Nom_Annee, "promo:annee", $_POST['annee']);
-	        $graph->addLiteral("http://localhost/IUT_LD/test/ressource/".$Nom_Annee, "promo:departement", $_POST['departement']);
-	        $graph->addLiteral("http://localhost/IUT_LD/test/ressource/".$Nom_Annee, "promo:groupes", $_POST['groupes']);
+	        $graph->addResource("http://localhost/IUT_LD/test/ressource/".$Nom_Annee, "promo:departement", "http://localhost/IUT_LD/test/ressource/".$_POST['departement']);
+	        $graph->addResource("http://localhost/IUT_LD/test/ressource/".$Nom_Annee, "promo:groupes", "http://localhost/IUT_LD/test/ressource/".$_POST['groupes']);
 	        $graph->add("http://localhost/IUT_LD/test/ressource/".$Nom_Annee, "rdfs:label", $_POST['Nom_Annee']);
 
 	        # Finally output the graph
