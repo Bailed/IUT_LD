@@ -44,7 +44,11 @@ class ControleurAffichage {
             $nom = $graph->getLiteral($uri, "groupe:nom") ;
             $annee = $graph->getLiteral($uri, "groupe:annee") ;
             $promo = $graph->getLiteral($uri, "groupe:promo") ;
-            $etudiants = $graph->getLiteral($uri, "groupe:etudiants") ;
+            
+
+            foreach ($graph -> all('groupe:etudiant') as $etudiant) {
+              
+            }
 
 
         } elseif ($graph->type() == 'promo:Promo') {
