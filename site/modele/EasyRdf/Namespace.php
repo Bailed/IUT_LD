@@ -96,7 +96,12 @@ class EasyRdf_Namespace
         'xhv'     => 'http://www.w3.org/1999/xhtml/vocab#',
         'xml'     => 'http://www.w3.org/XML/1998/namespace',
         'xsd'     => 'http://www.w3.org/2001/XMLSchema#',
-        'etudiant' => 'http://localhost/IUT_LD/test/class/etudiant.rdf', 
+        'etudiant'=> 'http://localhost',
+        'groupe'  => 'http://localhost',
+        'promo'   => 'http://localhost',
+        'departement'=> 'http://localhost',
+        'etablissement'=> 'http://localhost',
+        'professeur'  => 'http://localhost'
     );
 
     private static $namespaces = null;

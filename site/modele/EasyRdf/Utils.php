@@ -130,13 +130,6 @@ class EasyRdf_Utils
             $resource = $resource['value'];
         }
 
-        ?>
-        <script type="text/javascript">
-        console.log('test');
-        </script>
-
-        <?php
-
         $short = EasyRdf_Namespace::shorten($resource);
         if ($format == 'html') {
             $escaped = htmlentities($resource, ENT_QUOTES);
