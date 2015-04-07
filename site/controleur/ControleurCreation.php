@@ -1,6 +1,6 @@
 <?php
 
-set_include_path(get_include_path() . PATH_SEPARATOR . 'modele/');
+set_include_path(get_include_path().PATH_SEPARATOR.'modele');
     require_once "EasyRdf.php";
     require_once "html_tag_helpers.php";
 

@@ -1,7 +1,11 @@
 <?php
+
+set_include_path(get_include_path() . PATH_SEPARATOR . 'controleur/');
 	require_once "ControleurCreation.php";
 	/*require_once "ControleurAffichage.php";*/
-	require_once __DIR__."/../vue/affichage.php";
+
+set_include_path(get_include_path() . PATH_SEPARATOR . 'vue/');
+	require_once "affichage.php";
 
 	class Routeur {
 		

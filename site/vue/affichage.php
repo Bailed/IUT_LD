@@ -6,7 +6,7 @@
 		{
 			?><html>
 				<body>
-					<form action="index.php" method="post">
+					<form action="controleur/Routeur.php" method="post">
 					id : <input id="IdentifiantEtudiant" name="IdentifiantEtudiant" type="text">   <br/>
 					nom : <input name="nom" type="text">   <br/>
 					prenom : <input name="prenom" type="text">   <br/>
@@ -25,7 +25,7 @@
 		{
 			?><html>
 				<body>
-					<form action="index.php" method="post">
+					<form action="controleur/Routeur.php" method="post">
 					nom : <input name="nom" type="text">   <br/>
 					annee : <input name="annee" type="text">   <br/>
 					promo : <input name="promo" type="text">   <br/>
@@ -39,7 +39,7 @@
 		{
 			?><html>
 				<body>
-					<form action="index.php" method="post">
+					<form action="controleur/Routeur.php" method="post">
 					nom : <input name="nom" type="text">   <br/>
 					prenom : <input name="prenom" type="text">   <br/>
 					matiere : <input name="matiere" type="text">   <br/>
@@ -54,7 +54,7 @@
 		{
 			?><html>
 				<body>
-					<form action="index.php" method="post">
+					<form action="controleur/Routeur.php" method="post">
 					nom : <input name="nom" type="text">   <br/>
 					annee : <input name="annee" type="text">   <br/>
 					departement : <input name="departement" type="text">   <br/>
@@ -68,7 +68,7 @@
 		{
 			?><html>
 				<body>
-					<form action="index.php" method="post">
+					<form action="controleur/Routeur.php" method="post">
 					nom : <input name="nom" type="text">   <br/>
 					etablissement : <input name="etablissement" type="text">   <br/>
 					matiere : <input name="matiere" type="text">   <br/>
@@ -82,7 +82,7 @@
 		{
 			?><html>
 				<body>
-					<form action="index.php" method="post">
+					<form action="controleur/Routeur.php" method="post">
 					nom : <input name="nom" type="text">   <br/>
 					adresse : <input name="adresse" type="text">   <br/>
 					ville : <input name="ville" type="text">   <br/>
