@@ -36,37 +36,106 @@
  */
 
 /**
- * Class to serialise an EasyRdf_Graph to RDF/JSON
- * with no external dependancies.
+ * Class to serialise an EasyRdf_Graph to JSON-LD
  *
  * @package    EasyRdf
- * @copyright  Copyright (c) 2009-2013 Nicholas J Humfrey
+ * @copyright  Copyright (c) 2013 Alexey Zakhlestin
  * @license    http://www.opensource.org/licenses/bsd-license.php
  */
-class EasyRdf_Serialiser_Json extends EasyRdf_Serialiser_RdfPhp
+class EasyRdf_Serialiser_Json extends EasyRdf_Serialiser
 {
+    public function __construct()
+    {
+        if (!class_exists('\ML\Json\Json')) {
+            throw new LogicException('Please install "ml/json-ld" dependency to use JSON-LD serialisation');
+        }
+
+        parent::__construct();
+    }
+
     /**
-     * Method to serialise an EasyRdf_Graph to RDF/JSON
-     *
-     * http://n2.talis.com/wiki/RDF_JSON_Specification
-     * docs/appendix-a-rdf-formats-json.md
-     *
-     * @param EasyRdf_Graph $graph   An EasyRdf_Graph object.
-     * @param string        $format  The name of the format to convert to.
+     * @param EasyRdf_Graph $graph
+     * @param string        $format
      * @param array         $options
      * @throws EasyRdf_Exception
-     * @return string The RDF in the new desired format.
+     * @return string
      */
     public function serialise($graph, $format, array $options = array())
     {
         parent::checkSerialiseParams($graph, $format);
 
         if ($format != 'json') {
-            throw new EasyRdf_Exception(
-                "EasyRdf_Serialiser_Json does not support: $format"
-            );
+            throw new EasyRdf_Exception(__CLASS__.' does not support: '.$format);
         }
 
-        return json_encode(parent::serialise($graph, 'php'));
+
+        $ld_graph = new \ML\Json\Graph();
+        $nodes = array(); // cache for id-to-node association
+
+        foreach ($graph->toRdfPhp() as $resource => $properties) {
+            if (array_key_exists($resource, $nodes)) {
+                $node = $nodes[$resource];
+            } else {
+                $node = $ld_graph->createNode($resource);
+                $nodes[$resource] = $node;
+            }
+
+            foreach ($properties as $property => $values) {
+                foreach ($values as $value) {
+                    if ($value['type'] == 'bnode' or $value['type'] == 'uri') {
+                        if (array_key_exists($value['value'], $nodes)) {
+                            $_value = $nodes[$value['value']];
+                        } else {
+                            $_value = $ld_graph->createNode($value['value']);
+                            $nodes[$value['value']] = $_value;
+                        }
+                    } elseif ($value['type'] == 'literal') {
+                        if (isset($value['lang'])) {
+                            $_value = new \ML\Json\LanguageTaggedString($value['value'], $value['lang']);
+                        } elseif (isset($value['datatype'])) {
+                            $_value = new \ML\Json\TypedValue($value['value'], $value['datatype']);
+                        } else {
+                            $_value = $value['value'];
+                        }
+                    } else {
+                        throw new EasyRdf_Exception(
+                            "Unable to serialise object to JSON-LD: ".$value['type']
+                        );
+                    }
+
+                    if ($property == "http://www.w3.org/1999/02/22-rdf-syntax-ns#type") {
+                        $node->addType($_value);
+                    } else {
+                        $node->addPropertyValue($property, $_value);
+                    }
+                }
+            }
+        }
+
+        // OPTIONS
+        $use_native_types = !(isset($options['expand_native_types']) and $options['expand_native_types'] == true);
+        $should_compact = (isset($options['compact']) and $options['compact'] == true);
+        $should_frame = isset($options['frame']);
+
+        // expanded form
+        $data = $ld_graph->toJson($use_native_types);
+
+        if ($should_frame) {
+            $data = \ML\Json\Json::frame($data, $options['frame'], $options);
+
+        }
+
+        if ($should_compact) {
+            // compact form
+            $compact_context = isset($options['context']) ? $options['context'] : null;
+            $compact_options = array(
+                'useNativeTypes' => $use_native_types,
+                'base' => $graph->getUri()
+            );
+
+            $data = \ML\Json\Json::compact($data, $compact_context, $compact_options);
+        }
+
+        return \ML\Json\Json::toString($data);
     }
 }

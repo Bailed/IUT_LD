@@ -3,12 +3,12 @@
          xmlns:etudiant="http://localhost"
          xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
 
-  <etudiant:Etudiant rdf:about="http://localhost/IUT_LD/test/ressource/E133756M">
-    <etudiant:nom>PICARD</etudiant:nom>
-    <etudiant:prenom>Thomas</etudiant:prenom>
-    <etudiant:id>E133756M</etudiant:id>
+  <etudiant:Etudiant rdf:about="http://localhost/IUT_LD/test/ressource/E134727S">
+    <etudiant:nom>QUEMARD</etudiant:nom>
+    <etudiant:prenom>Mael</etudiant:prenom>
+    <etudiant:id>E134727S</etudiant:id>
     <etudiant:groupe>groupe 1</etudiant:groupe>
-    <rdfs:label>E133756M</rdfs:label>
+    <rdfs:label>E134727S</rdfs:label>
   </etudiant:Etudiant>
 
 </rdf:RDF>

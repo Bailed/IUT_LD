@@ -46,6 +46,7 @@
  * @copyright  Copyright (c) 2009-2013 Nicholas J Humfrey
  * @license    http://www.opensource.org/licenses/bsd-license.php
  */
+
 class EasyRdf_Format
 {
     private static $formats = array();
@@ -548,7 +549,7 @@ EasyRdf_Format::register(
     array(
         'application/ld+json' => 1.0
     ),
-    array('jsonld')
+    array('jsonld', 'JsonLd')
 );
 
 EasyRdf_Format::register(
