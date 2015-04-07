@@ -50,7 +50,7 @@ include 'includes/nav.php';
 		<div class="row bloc">
 			<div class="col-md-12">
 				<div>
-					<img src="http://lorempicsum.com/futurama/1200/400/9">
+					<img class="img-responsive" src="http://lorempicsum.com/futurama/1200/400/9">
 				</div>
 			</div>
 		</div>

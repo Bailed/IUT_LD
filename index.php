@@ -16,7 +16,7 @@ include 'includes/nav.php';
 			<option value="2">une promotion</option>
 			<option value="3">département informatique</option>
 		</select>
-		<button class="nl-submit text-center" type="submit">Envoyer ma demande</button>
+		<p class="text-center"><button class="nl-submit text-center" type="submit">Envoyer ma demande</button></p>
 		<div class="nl-overlay"></div>
 	</form>
 </div>

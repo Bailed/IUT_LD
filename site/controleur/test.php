@@ -6,7 +6,7 @@
 
 
 
-	$ctrl -> afficher("http://localhost/IUT_LD/site/ressource/E133756M.rdf"); 
+	echo ($ctrl -> afficher("http://localhost/IUT_LD/site/ressource/E133756M.rdf")); 
 
 
 

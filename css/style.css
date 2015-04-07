@@ -27,3 +27,43 @@ body {
 legend {
 	color: #fff;
 }
+
+.show {
+	display: hidden;
+}
+
+.malist {
+	list-style-type: none;
+}
+
+.malist li a {
+	color: #fff;
+}
+
+.monfiltre {
+	color: #000;
+}
+
+.cookie {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	padding: 7px 20px;
+	color: #fff;
+	font-size: 0.9em;
+	background-color: #000;
+	text-align: center;
+}
+.cookie a{text-decoration: underline;}
+.cookie a:hover{text-decoration: none; color: #fff;}
+.cookie_btn{display: inline;
+background-color: #f2f2f2;
+margin-left: 10px;
+margin-right: 10px;
+padding: 5px;
+color: #000;
+}
+.cookie_btn a{
+	text-decoration: none;
+}
