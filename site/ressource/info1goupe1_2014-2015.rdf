@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:groupe="http://localhost/groupe"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+  <groupe:Groupe rdf:about="http://localhost/IUT_LD/site/ressource/info1goupe1_2014-2015.rdf">
+    <groupe:nom>info1goupe1</groupe:nom>
+    <groupe:annee>2014-2015</groupe:annee>
+    <groupe:promo>info1</groupe:promo>
+    <rdfs:label>info1goupe1_2014-2015</rdfs:label>
+  </groupe:Groupe>
+
+</rdf:RDF>

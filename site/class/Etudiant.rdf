@@ -1,0 +1,62 @@
+<rdf:RDF
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+<rdf:Description about="localhost/IUT_LD/Class/Etudiant">
+ <rdfs:comment>Decrit la classe etudiant</rdfs:comment>
+ <rdfs:comment>Version 1.0</rdfs:comment>
+ <rdfs:seeAlso resource="localhost/IUT_LD/Class/Etudiant"/>
+</rdf:Description>
+
+<rdfs:Class rdf:ID="Etudiant">
+	<rdfs:label xml:lang="fr">Etudiant</rdfs:label>
+	<rdfs:isDefinedBy rdf:ressource="localhost/IUT_LD/Class/Etudiant"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:ID="Ddn">
+	<rdfs:label xml:lang="fr">Date de naissance</rdfs:label>
+	<rdfs:isDefinedBy rdf:ressource="localhost/IUT_LD/Class/Etudiant"/>
+</rdfs:Class>
+
+<rdfs:Property rdf:ID="nom">
+	<rdfs:label xml:lang="fr">Nom de l'etudiant</rdfs:label>
+	<rdfs:range rdf:ressource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+	<rdfs:domain rdf:resource="#Etudiant"/>
+	<rdfs:isDefinedBy rdf:ressource="localhost/IUT_LD/Class/Etudiant"/>
+</rdfs:Property>
+
+<rdfs:Property rdf:ID="prenom">
+	<rdfs:label xml:lang="fr">prenom de l'etudiant</rdfs:label>
+	<rdfs:range rdf:ressource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+	<rdfs:domain rdf:resource="#Etudiant"/>
+	<rdfs:isDefinedBy rdf:ressource="localhost/IUT_LD/Class/Etudiant"/>
+</rdfs:Property>
+
+<rdfs:Property rdf:ID="ddnE">
+	<rdfs:label xml:lang="fr">date de naissance de l'etudiant</rdfs:label>
+	<rdfs:range rdf:ressource="#Ddn"/>
+	<rdfs:domain rdf:resource="#Etudiant"/>
+	<rdfs:isDefinedBy rdf:ressource="localhost/IUT_LD/Class/Etudiant"/>
+</rdfs:Property>
+
+<rdfs:Property rdf:ID="jours">
+	<rdfs:label xml:lang="fr">jours de naissance de l'etudiant</rdfs:label>
+	<rdfs:range rdf:ressource="http://www.w3.org/2000/01/rdf-schema#Integer"/>
+	<rdfs:domain rdf:resource="#Ddn"/>
+	<rdfs:isDefinedBy rdf:ressource="localhost/IUT_LD/Class/Etudiant"/>
+</rdfs:Property>
+
+<rdfs:Property rdf:ID="mois">
+	<rdfs:label xml:lang="fr">Mois de naissance de l'etudiant</rdfs:label>
+	<rdfs:range rdf:ressource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+	<rdfs:domain rdf:resource="#Etudiant"/>
+	<rdfs:isDefinedBy rdf:ressource="localhost/IUT_LD/Class/Etudiant"/>
+</rdfs:Property>
+
+<rdfs:Property rdf:ID="annee">
+	<rdfs:label xml:lang="fr">annee de naissance de l'etudiant</rdfs:label>
+	<rdfs:range rdf:ressource="http://www.w3.org/2000/01/rdf-schema#Integer"/>
+	<rdfs:domain rdf:resource="#Etudiant"/>
+	<rdfs:isDefinedBy rdf:ressource="localhost/IUT_LD/Class/Etudiant"/>
+</rdfs:Property>
+
+</rdf:RDF>
