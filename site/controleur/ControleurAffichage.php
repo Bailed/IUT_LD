@@ -15,7 +15,7 @@ class ControleurAffichage {
 
 		$graph = EasyRdf_Graph::newAndLoad($uri);
 
-		//$graph -> dump();  
+		$graph -> dump();  
 
         if ($graph->type() == "etudiant:Etudiant") {
 
@@ -35,7 +35,7 @@ class ControleurAffichage {
             $matiere = $graph->getLiteral($uri, "professeur:matiere") ;
             $departement = $graph->getLiteral($uri, "professeur:departement") ;
 
-            $profJson = array('professeur' => array('id' => $id, 'nom' => $nom, 'prenom' => $prenom, 'matiere' => $matiere, 'departement' => $departement)); 
+            $profJson = array('professeur' => array('id' => (string)$id, 'nom' => (string)$nom, 'prenom' => (string)$prenom, 'matiere' => (string)$matiere, 'departement' => (string)$departement)); 
 
             return json_encode($profJson);  
 
@@ -44,18 +44,47 @@ class ControleurAffichage {
             $nom = $graph->getLiteral($uri, "groupe:nom") ;
             $annee = $graph->getLiteral($uri, "groupe:annee") ;
             $promo = $graph->getLiteral($uri, "groupe:promo") ;
-            
 
-            foreach ($graph -> all('groupe:etudiant') as $etudiant) {
-              
-            }
+            $groupeJson = array('groupe' => array('id' => (string)$id, 'nom' => (string)$nom, 'annee' => (string)$annee, 'promo' => (string)$promo )); 
+
+            return json_encode($groupeJson);
 
 
         } elseif ($graph->type() == 'promo:Promo') {
-            $promo = $graph->resource();
+            $id = $graph -> label($uri);
+            $nom = $graph->getLiteral($uri, "promo:nom") ;
+            $annee = $graph->getLiteral($uri, "promo:annee") ;
+            $dep = $graph->getLiteral($uri, "promo:departement") ;
+
+            $promoJson = array('groupe' => array('id' => (string)$id, 'nom' => (string)$nom, 'annee' => (string)$annee, 'departement' => (string)$dep )); 
+
+            return json_encode($promoJson);
+
         } elseif ($graph->type() == 'departement:Departement') {
-            $dep = $graph->resource();
+            $id = $graph -> label($uri);
+            $nom = $graph->getLiteral($uri, "departement:nom") ;
+            $dep = $graph->getLiteral($uri, "departement:etablissement") ;
+            $mat = $graph->getLiteral($uri, "departement:matiere") ;
+
+            $depJson = array('groupe' => array('id' => (string)$id, 'nom' => (string)$nom, 'departement' => (string)$dep, 'matiere' => (string)$mat )); 
+
+            return json_encode($depJson);
+
+  
         } elseif ($graph->type() == 'etablissement:Etablissement') {
+            $id = $graph -> label($uri);
+            $nom = $graph->getLiteral($uri, "etablissement:nom") ;
+            $adresse = $graph->getLiteral($uri, "etablissement:adresse") ;
+            $ville = $graph->getLiteral($uri, "etablissement:ville") ;
+            $CP = $graph->getLiteral($uri, "etablissement:codepostal") ;
+            $dep = $graph->getLiteral($uri, "etablissement:departement") ;
+            
+
+            $etJson = array('groupe' => array('id' => (string)$id, 'nom' => (string)$nom, 'adresse' => (string)$adresse, 'ville' => (string)$ville, 'codePostal' => (string)$CP, 'departement' => (string)$dep )); 
+
+            return json_encode($etJson);
+            
+
             $etablissement = $graph->resource();
         }
 	}
