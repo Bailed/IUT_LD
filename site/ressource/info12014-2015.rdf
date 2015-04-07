@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:promo="http://localhost/promo"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+  <promo:Promo rdf:about="http://localhost/IUT_LD/test/ressource/info12014-2015">
+    <promo:nom>info1</promo:nom>
+    <promo:annee>2014-2015</promo:annee>
+    <promo:departement>info</promo:departement>
+    <rdfs:label>info12014-2015</rdfs:label>
+  </promo:Promo>
+
+</rdf:RDF>

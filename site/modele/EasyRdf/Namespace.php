@@ -96,12 +96,12 @@ class EasyRdf_Namespace
         'xhv'     => 'http://www.w3.org/1999/xhtml/vocab#',
         'xml'     => 'http://www.w3.org/XML/1998/namespace',
         'xsd'     => 'http://www.w3.org/2001/XMLSchema#',
-        'etudiant'=> 'http://localhost',
-        'groupe'  => 'http://localhost',
-        'promo'   => 'http://localhost',
-        'departement'=> 'http://localhost',
-        'etablissement'=> 'http://localhost',
-        'professeur'  => 'http://localhost'
+        'etudiant'=> 'http://localhost/etudiant',
+        'groupe'  => 'http://localhost/groupe',
+        'promo'   => 'http://localhost/promo',
+        'departement'=> 'http://localhost/departement',
+        'etablissement'=> 'http://localhost/etablissement',
+        'professeur'  => 'http://localhost/professeur'
     );
 
     private static $namespaces = null;

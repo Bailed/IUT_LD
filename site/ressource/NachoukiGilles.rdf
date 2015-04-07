@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:professeur="http://localhost/professeur"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+  <professeur:Professeur rdf:about="http://localhost/IUT_LD/test/ressource/NachoukiGilles">
+    <professeur:nom>Nachouki</professeur:nom>
+    <professeur:prenom>Gilles</professeur:prenom>
+    <professeur:matiere>BD</professeur:matiere>
+    <professeur:departement rdf:resource="info"/>
+    <rdfs:label>NachoukiGilles</rdfs:label>
+  </professeur:Professeur>
+
+</rdf:RDF>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:etablissement="http://localhost/etablissement"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+  <etablissement:etablissement rdf:about="http://localhost/IUT_LD/test/ressource/IUTNantes">
+    <etablissement:nom>IUT</etablissement:nom>
+    <etablissement:adresse>3 rue marechal Joffre</etablissement:adresse>
+    <etablissement:ville>Nantes</etablissement:ville>
+    <etablissement:codepostal>44000</etablissement:codepostal>
+    <etablissement:departement>Loire Atlantique</etablissement:departement>
+    <rdfs:label>IUTNantes</rdfs:label>
+  </etablissement:etablissement>
+
+</rdf:RDF>

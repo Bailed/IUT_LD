@@ -6,7 +6,7 @@
 		{
 			?><html>
 				<body>
-					<form action="controleur/Routeur.php" method="post">
+					<form action="index.php" method="post">
 					id : <input id="IdentifiantEtudiant" name="IdentifiantEtudiant" type="text">   <br/>
 					nom : <input name="nom" type="text">   <br/>
 					prenom : <input name="prenom" type="text">   <br/>
@@ -15,36 +15,36 @@
 						<option>groupe 2</option>
 						<option>groupe 3</option>
 					</select><br>
-					<input id="submit" name="soumettre" type="submit" value="soumettre">
+					<input id="submit" name="etudiant" type="submit" value="soumettre">
 					</form>
 				</body>
 			</html><?php
 		}
 
-		function genereVueGroupe($value='')
+		function genereVueGroupe()
 		{
 			?><html>
 				<body>
-					<form action="controleur/Routeur.php" method="post">
+					<form action="index.php" method="post">
 					nom : <input name="nom" type="text">   <br/>
 					annee : <input name="annee" type="text">   <br/>
 					promo : <input name="promo" type="text">   <br/>
-					<input id="submit" name="soumettre" type="submit" value="soumettre">
+					<input id="submit" name="groupe" type="submit" value="soumettre">
 					</form>
 				</body>
 			</html><?php
 		}
 
-		function genereVueProfesseur($value='')
+		function genereVueProfesseur()
 		{
 			?><html>
 				<body>
-					<form action="controleur/Routeur.php" method="post">
+					<form action="index.php" method="post">
 					nom : <input name="nom" type="text">   <br/>
 					prenom : <input name="prenom" type="text">   <br/>
 					matiere : <input name="matiere" type="text">   <br/>
 					departement : <input name="departement" type="text">   <br/>
-					<input id="submit" name="soumettre" type="submit" value="soumettre">
+					<input id="submit" name="professeur" type="submit" value="soumettre">
 					</form>
 				</body>
 			</html><?php
@@ -54,11 +54,11 @@
 		{
 			?><html>
 				<body>
-					<form action="controleur/Routeur.php" method="post">
+					<form action="index.php" method="post">
 					nom : <input name="nom" type="text">   <br/>
 					annee : <input name="annee" type="text">   <br/>
 					departement : <input name="departement" type="text">   <br/>
-					<input id="submit" name="soumettre" type="submit" value="soumettre">
+					<input id="submit" name="promo" type="submit" value="soumettre">
 					</form>
 				</body>
 			</html><?php
@@ -68,11 +68,11 @@
 		{
 			?><html>
 				<body>
-					<form action="controleur/Routeur.php" method="post">
+					<form action="index.php" method="post">
 					nom : <input name="nom" type="text">   <br/>
-					etablissement : <input name="etablissement" type="text">   <br/>
+					etablissement : <input name="etablissementD" type="text">   <br/>
 					matiere : <input name="matiere" type="text">   <br/>
-					<input id="submit" name="soumettre" type="submit" value="soumettre">
+					<input id="submit" name="departement" type="submit" value="soumettre">
 					</form>
 				</body>
 			</html><?php
@@ -82,13 +82,13 @@
 		{
 			?><html>
 				<body>
-					<form action="controleur/Routeur.php" method="post">
+					<form action="index.php" method="post">
 					nom : <input name="nom" type="text">   <br/>
 					adresse : <input name="adresse" type="text">   <br/>
 					ville : <input name="ville" type="text">   <br/>
 					code postal : <input name="codepostal" type="text">   <br/>
 					departement : <input name="departement" type="text">   <br/>
-					<input id="submit" name="soumettre" type="submit" value="soumettre">
+					<input id="submit" name="etablissement" type="submit" value="soumettre">
 					</form>
 				</body>
 			</html><?php
