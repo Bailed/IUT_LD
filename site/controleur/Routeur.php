@@ -35,7 +35,6 @@ set_include_path(get_include_path() . PATH_SEPARATOR . 'vue/');
 				$this->affichage->genereVuePromo();
 			}
 			elseif (isset($_GET["departement"])) {
-				echo "coucou4"; 
 				$this->affichage->genereVueDepartement();
 			}
 			elseif (isset($_GET["etablissement"])) {

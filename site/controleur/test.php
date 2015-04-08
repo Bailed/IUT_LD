@@ -5,27 +5,27 @@
 	$ctrl = new ControleurAffichage(); 
 
 
-	echo " etablissement <br> "; 
+	echo " etablissement <br>  <br>"; 
 
 	echo ($ctrl -> afficher("http://localhost/IUT_LD/site/ressource/IUT_Nantes.rdf")); 
 
-	echo " <br> departement <br>  "; 
+	echo " <br> <br><br> departement <br> <br> "; 
 
-	echo ($ctrl -> afficher("http://localhost/IUT_LD/site/ressource/informatique_IUTNantes.rdf")); 
+	echo ($ctrl -> afficher("http://localhost/IUT_LD/site/ressource/informatique_IUT_Nantes.rdf")); 
 	
-	echo " <br>  promo  <br> "; 
+	echo " <br><br><br>  promo  <br> <br>"; 
 	
-	echo ($ctrl -> afficher("http://localhost/IUT_LD/site/ressource/info1_2014-2015.rdf")); 
+	echo ($ctrl -> afficher("http://localhost/IUT_LD/site/ressource/info2_2014-2015.rdf")); 
 
-	echo " <br> groupe <br>  "; 
+	echo " <br> <br><br>groupe <br><br>  "; 
 
-	echo ($ctrl -> afficher("http://localhost/IUT_LD/site/ressource/info1goupe1_2014-2015.rdf")); 
+	echo ($ctrl -> afficher("http://localhost/IUT_LD/site/ressource/info2_groupe1_2014-2015.rdf")); 
 
-	echo " <br> professeur <br> "; 
+	echo " <br><br><br> professeur <br><br> "; 
 
-	echo ($ctrl -> afficher("http://localhost/IUT_LD/site/ressource/Nachouki_Gilles.rdf")); 
+	echo ($ctrl -> afficher("http://localhost/IUT_LD/site/ressource/REMM_Jean-Francois.rdf")); 
 
-	echo " <br> etudiant <br> "; 
+	echo " <br><br><br> etudiant <br> <br>"; 
 
 	echo ($ctrl -> afficher("http://localhost/IUT_LD/site/ressource/E133756M.rdf")); 
 

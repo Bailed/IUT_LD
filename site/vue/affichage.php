@@ -11,7 +11,7 @@
 					nom : <input name="nom" type="text">   <br/>
 					prenom : <input name="prenom" type="text">   <br/>
 					<select name="groupe">
-						<option>http://localhost/IUT_LD/site/ressource/info1goupe1_2014-2015.rdf</option>
+						<option>http://localhost/IUT_LD/site/ressource/info2_groupe1_2014-2015.rdf</option>
 						<option>groupe 2</option>
 						<option>groupe 3</option>
 					</select><br>

@@ -7,14 +7,17 @@ set_include_path(get_include_path() . PATH_SEPARATOR . 'modele/');
 
 class ControleurCreation {
 
+	private $racine; 
+
 	public function __construct(){ 
+		$this -> racine ="http://localhost/IUT_LD/site/ressource/"; 
 	}
 
   	// créer un étudiant
 	public function creerEtudiant() {  
 		if (isset($_POST['IdentifiantEtudiant'])) {
 
-			$uri = __DIR__."/../ressource/".$_POST['IdentifiantEtudiant'].".rdf"; 
+			$uri = ($this->racine).$_POST['IdentifiantEtudiant'].".rdf"; 
 
 	        $graph = new EasyRdf_Graph();
 	        $graph->addResource($uri, "rdf:type", "etudiant:Etudiant");
@@ -29,12 +32,6 @@ class ControleurCreation {
 	        $graphAjout->addResource($groupe, "groupe:etudiant",$uri);
 	        $labelGroupe = $graphAjout -> label(); 
 
-	        $file = __DIR__.'/../ressource/bibli.json'; 
-			$biblio = json_decode(file_get_contents($file));
-			$ajout = array ('type' => "etudiant", 'label' => $_POST['IdentifiantEtudiant'], 'uri' => $uri);
-			array_push($biblio, $ajout); 
-			file_put_contents($file, json_encode($biblio));
-
 	        # Finally output the graph
 
 	        $data = $graph->serialise("rdfxml");
@@ -43,38 +40,82 @@ class ControleurCreation {
 	        }
 
 
-		    $file = "ressource/".$_POST['IdentifiantEtudiant'].".rdf"; 
+	        $creer = true; 
+		    $fileName = "ressource/".$_POST['IdentifiantEtudiant'].".rdf"; 
 		    $dir = scandir("ressource/");
 			foreach ($dir as $name) {
-				if (basename($name, ".rdf") == $_POST['IdentifiantEtudiant']) {
+				
+				$file = explode(".", $name); 	
+
+				if ( $file[0] == $_POST['IdentifiantEtudiant'] && $file[1] == "rdf") {
 					echo "<br> Le fichier existe <br>";
+					$creer = false; 
 				}
-				else{
-					$myfile = fopen($file, "w"); 
-			    	fwrite($myfile,$data); 
-			    	fclose($myfile);
+			}
 
-			    	echo "Etudiant crée"; 
+			if($creer) {
+				$myfile = fopen($fileName, "w"); 
+		    	fwrite($myfile,$data); 
+		    	fclose($myfile);
 
-					$data = $graphAjout->serialise("rdfxml");
-			        if (!is_scalar($data)) {
-			            $data = var_export($data, true);
-			        }
+		    	echo "Etudiant crée"; 
 
+				$data = $graphAjout->serialise("rdfxml");
+		        if (!is_scalar($data)) {
+		            $data = var_export($data, true);
+		        }
 
-				    $file = "ressource/".$labelGroupe.".rdf"; 
-					$myfile = fopen($file, "w"); 
-					fwrite($myfile,$data); 
-					fclose($myfile);
+			    $file = "ressource/".$labelGroupe.".rdf"; 
+				$myfile = fopen($file, "w"); 
+				fwrite($myfile,$data); 
+				fclose($myfile);
 
-					echo "groupe modifie"; 
-				}
+				echo "groupe modifie"; 
+
+				$file = 'ressource/bibli.json'; 
+				$biblio = json_decode(file_get_contents($file));
+				$ajout = array ('type' => "etudiant", 'label' => $_POST['IdentifiantEtudiant'], 'uri' => $uri);
+				array_push($biblio, $ajout); 
+				file_put_contents($file, json_encode($biblio));
 			}			 
 	    }
 	}
 
 	// créer un professeur
 	public function creerProfesseur() { 
+
+		/*$uri = ($this->racine).$Nom_Ville.".rdf"; 
+
+	        $graph = new EasyRdf_Graph();
+	        $graph->addResource($uri, "rdf:type", "etablissement:Etablissement");
+	        $graph->addLiteral($uri, "etablissement:nom", $_POST['nom']);
+	        $graph->addLiteral($uri, "etablissement:adresse", $_POST['adresse']);
+	        $graph->addLiteral($uri, "etablissement:ville", $_POST['ville']);
+	        $graph->addLiteral($uri, "etablissement:codepostal", $_POST['codepostal']);
+	        $graph->addLiteral($uri, "etablissement:departement", $_POST["departement"]);
+	        $graph->add($uri, "rdfs:label", $Nom_Ville);
+
+	        # Finally output the graph
+	        $data = $graph->serialise("rdfxml");
+	        if (!is_scalar($data)) {
+	            $data = var_export($data, true);
+	        }
+
+	       	$creer = true; 
+		    $fileName = "ressource/".$Nom_Ville.".rdf"; 
+			$dir = scandir("ressource/");
+			foreach ($dir as $name) {
+
+				$file = explode(".", $name); 	
+
+				if ( $file[0] == $Nom_Ville && $file[1] == "rdf") {
+					echo "<br> Le fichier existe <br>";
+					$creer = false; 
+				}
+				
+			}*/
+
+
 		$Nom_Prenom = null; 
 		if (isset($_POST['nom']) && isset($_POST['prenom'])) {
 			$Nom_Prenom = $_POST['nom']."_".$_POST['prenom'];
@@ -82,7 +123,7 @@ class ControleurCreation {
 
 		if (!is_null($Nom_Prenom)) {
 
-			$uri = __DIR__."/../ressource/".$Nom_Prenom.".rdf"; 
+			$uri = ($this->racine).$Nom_Prenom.".rdf"; 
 
 	        $graph = new EasyRdf_Graph();
 	        $graph->addResource($uri, "rdf:type", "professeur:Professeur");
@@ -99,46 +140,54 @@ class ControleurCreation {
 	       	$graphAjout->addLiteral($departement, "departement:matiere", $_POST["matiere"]);
 	        $labelDepartement = $graphAjout -> label();
 
-	        $file = __DIR__.'/../ressource/bibli.json'; 
-			$biblio = json_decode(file_get_contents($file));
-			$ajout = array ('type' => "professeur", 'label' => $Nom_Prenom, 'uri' => $uri);
-			array_push($biblio, $ajout); 
-			file_put_contents($file, json_encode($biblio));
-
 	        # Finally output the graph
+
+	        echo $uri . "<br>"; 
 
 	        $data = $graph->serialise("rdfxml");
 	        if (!is_scalar($data)) {
 	            $data = var_export($data, true);
 	        }
 
-		    $file = "ressource/".$Nom_Prenom.".rdf"; 
-
+	        $creer = true; 
+		    $fileName = "ressource/".$Nom_Prenom.".rdf"; 
 		    $dir = scandir("ressource/");
 			foreach ($dir as $name) {
-				if (basename($name, ".rdf") == $Nom_Prenom) {
+				
+				$file = explode(".", $name); 	
+
+				if ( $file[0] == $Nom_Prenom && $file[1] == "rdf") {
 					echo "<br> Le fichier existe <br>";
+					$creer = false; 
 				}
-				else{
-					$myfile = fopen($file, "w"); 
-			    	fwrite($myfile,$data); 
-			    	fclose($myfile);
 
-			    	echo "Professeur crée";  
+			}
 
-			    	$data = $graphAjout->serialise("rdfxml");
-			        if (!is_scalar($data)) {
-			            $data = var_export($data, true);
-			        }
+			if($creer){
+				$myfile = fopen($fileName, "w"); 
+		    	fwrite($myfile,$data); 
+		    	fclose($myfile);
 
-				    $file = "ressource/".$labelDepartement.".rdf"; 
-					$myfile = fopen($file, "w"); 
-					fwrite($myfile,$data); 
-					fclose($myfile);
+		    	echo "Professeur crée";  
 
-				    echo "Departement modifie"; 
-				}
-			} 
+		    	$data = $graphAjout->serialise("rdfxml");
+		        if (!is_scalar($data)) {
+		            $data = var_export($data, true);
+		        }
+
+			    $file = "ressource/".$labelDepartement.".rdf"; 
+				$myfile = fopen($file, "w"); 
+				fwrite($myfile,$data); 
+				fclose($myfile);
+
+			    echo "Departement modifie"; 
+
+			    $file = 'ressource/bibli.json'; 
+				$biblio = json_decode(file_get_contents($file));
+				$ajout = array ('type' => "professeur", 'label' => $Nom_Prenom, 'uri' => $uri);
+				array_push($biblio, $ajout); 
+				file_put_contents($file, json_encode($biblio));	
+			}
 		}
 	}
 
@@ -156,25 +205,19 @@ class ControleurCreation {
 
 		if (!is_null($Nom_Annee)) {
 
-	        $uri = __DIR__."/../ressource/".$Nom_Annee.".rdf"; 
+	        $uri = ($this->racine).$Nom_Annee.".rdf"; 
 
 	        $graph->addResource($uri, "rdf:type", "groupe:Groupe");
 	        $graph->addLiteral($uri, "groupe:nom", $_POST['nom']);
 	        $graph->addLiteral($uri, "groupe:annee", $_POST['annee']);
 
 	        
-	        $graph->addLiteral($uri, "groupe:promo", $promo);
+	        $graph->addResource($uri, "groupe:promo", $promo);
 	        $graph->add($uri, "rdfs:label", $Nom_Annee);
 
 	        
 	        $graphAjout->addResource($promo, "promo:groupe",$uri);
 	        $labelPromo = $graphAjout -> label(); 
-
-	        $file = __DIR__.'/../ressource/bibli.json'; 
-			$biblio = json_decode(file_get_contents($file));
-			$ajout = array ('type' => "groupe", 'label' => $Nom_Annee, 'uri' => $uri);
-			array_push($biblio, $ajout); 
-			file_put_contents($file, json_encode($biblio));
 
 	        # Finally output the graph
 
@@ -183,32 +226,44 @@ class ControleurCreation {
 	            $data = var_export($data, true);
 	        }
 
-		    $file = "ressource/".$Nom_Annee.".rdf"; 
+	        $creer = true; 
+		    $fileName = "ressource/".$Nom_Annee.".rdf"; 
 			$dir = scandir("ressource/");
 			foreach ($dir as $name) {
-				if (basename($name, ".rdf") == $Nom_Annee) {
+
+				$file = explode(".", $name); 	
+
+				if ( $file[0] == $Nom_Annee && $file[1] == "rdf") {
 					echo "<br> Le fichier existe <br>";
+					$creer = false; 
 				}
-				else{
-					$myfile = fopen($file, "w"); 
-			    	fwrite($myfile,$data); 
-			    	fclose($myfile);
+			}
 
-			    	echo "Groupe crée"; 
+			if($creer) {
+				$myfile = fopen($fileName, "w"); 
+		    	fwrite($myfile,$data); 
+		    	fclose($myfile);
 
-				    $data = $graphAjout->serialise("rdfxml");
-			        if (!is_scalar($data)) {
-			            $data = var_export($data, true);
-			        }
+		    	echo "Groupe crée"; 
 
-				    $file = "ressource/".$labelPromo.".rdf"; 
-					$myfile = fopen($file, "w"); 
-					fwrite($myfile,$data); 
-					fclose($myfile);
+			    $data = $graphAjout->serialise("rdfxml");
+		        if (!is_scalar($data)) {
+		            $data = var_export($data, true);
+		        }
 
-				    echo "Promo modifie"; 
-				}
-			} 
+			    $file = "ressource/".$labelPromo.".rdf"; 
+				$myfile = fopen($file, "w"); 
+				fwrite($myfile,$data); 
+				fclose($myfile);
+
+			    echo "Promo modifie"; 
+
+			    $file = 'ressource/bibli.json'; 
+				$biblio = json_decode(file_get_contents($file));
+				$ajout = array ('type' => "groupe", 'label' => $Nom_Annee, 'uri' => $uri);
+				array_push($biblio, $ajout); 
+				file_put_contents($file, json_encode($biblio)); 
+			}
 	    }
 	}
 
@@ -221,7 +276,7 @@ class ControleurCreation {
 
 		if (!is_null($Nom_Annee)) {
 
-			$uri = __DIR__."/../ressource/".$Nom_Annee.".rdf";
+			$uri = ($this->racine).$Nom_Annee.".rdf";
 
 	        $graph = new EasyRdf_Graph();
 	        $graph->addResource($uri, "rdf:type", "promo:Promo");
@@ -229,18 +284,12 @@ class ControleurCreation {
 	        $graph->addLiteral($uri, "promo:annee", $_POST['annee']);
 
 	        $departement =  $graph -> resource($_POST['departement']);
-	        $graph->addLiteral($uri, "promo:departement", $departement);
+	        $graph->addResource($uri, "promo:departement", $departement);
 	        $graph->add($uri, "rdfs:label", $Nom_Annee);
 
 			$graphAjout = EasyRdf_Graph::newAndLoad($departement);
 	       	$graphAjout->addResource($departement, "departement:promo",$uri);
 	        $labelDepartement = $graphAjout -> label();
-
-	        $file = __DIR__.'/../ressource/bibli.json'; 
-			$biblio = json_decode(file_get_contents($file));
-			$ajout = array ('type' => "promo", 'label' => $Nom_Annee, 'uri' => $uri);
-			array_push($biblio, $ajout); 
-			file_put_contents($file, json_encode($biblio));
 
 	        # Finally output the graph
 	        $data = $graph->serialise("rdfxml");
@@ -248,31 +297,43 @@ class ControleurCreation {
 	            $data = var_export($data, true);
 	        }
 
-		    $file = "ressource/".$Nom_Annee.".rdf"; 
+	        $creer = true; 
+		    $fileName = "ressource/".$Nom_Annee.".rdf"; 
 		    $dir = scandir("ressource/");
 			foreach ($dir as $name) {
-				if (basename($name, ".rdf") == $Nom_Annee) {
+				
+				$file = explode(".", $name); 	
+
+				if ( $file[0] == $Nom_Annee && $file[1] == "rdf") {
 					echo "<br> Le fichier existe <br>";
+					$creer = false; 
 				}
-				else{
-					$myfile = fopen($file, "w"); 
-			    	fwrite($myfile,$data); 
-			    	fclose($myfile);
+			}
 
-			    	echo "Promo crée"; 
+			if($creer) {
+				$myfile = fopen($fileName, "w"); 
+		    	fwrite($myfile,$data); 
+		    	fclose($myfile);
 
-				    $data = $graphAjout->serialise("rdfxml");
-			        if (!is_scalar($data)) {
-			            $data = var_export($data, true);
-			        }
+		    	echo "Promo crée"; 
 
-				    $file = "ressource/".$labelDepartement.".rdf"; 
-					$myfile = fopen($file, "w"); 
-					fwrite($myfile,$data); 
-					fclose($myfile);
+			    $data = $graphAjout->serialise("rdfxml");
+		        if (!is_scalar($data)) {
+		            $data = var_export($data, true);
+		        }
 
-				    echo "Departement modifie"; 
-				}
+			    $file = "ressource/".$labelDepartement.".rdf"; 
+				$myfile = fopen($file, "w"); 
+				fwrite($myfile,$data); 
+				fclose($myfile);
+
+			    echo "Departement modifie"; 
+
+			    $file = 'ressource/bibli.json'; 
+				$biblio = json_decode(file_get_contents($file));
+				$ajout = array ('type' => "promo", 'label' => $Nom_Annee, 'uri' => $uri);
+				array_push($biblio, $ajout); 
+				file_put_contents($file, json_encode($biblio));
 			} 
 	    }
 	}
@@ -290,7 +351,7 @@ class ControleurCreation {
 
 		if (!is_null($Nom_Etablissement)) {
 
-			$uri = __DIR__."/../ressource/".$Nom_Etablissement.".rdf"; 
+			$uri = ($this->racine).$Nom_Etablissement.".rdf"; 
 	        
 	        $graph->addResource($uri, "rdf:type", "departement:Departement");
 	        $graph->addLiteral($uri, "departement:nom", $_POST['nom']);
@@ -299,44 +360,51 @@ class ControleurCreation {
 	     
 	       	$graphAjout->addResource($etablissement, "etablissement:departement",$uri);
 	        $labelEtablissement = $graphAjout -> label();
-
-	        $file = __DIR__.'/../ressource/bibli.json'; 
-			$biblio = json_decode(file_get_contents($file));
-			$ajout = array ('type' => "departement", 'label' => $Nom_Etablissement, 'uri' => $uri);
-			array_push($biblio, $ajout); 
-			file_put_contents($file, json_encode($biblio));
-	       
+   
 	        # Finally output the graph
 	        $data = $graph->serialise("rdfxml");
 	        if (!is_scalar($data)) {
 	            $data = var_export($data, true);
 	        }
 
-		    $file = "ressource/".$Nom_Etablissement.".rdf"; 
+	        $creer = true; 
+		    $fileName = "ressource/".$Nom_Etablissement.".rdf"; 
 			$dir = scandir("ressource/");
 			foreach ($dir as $name) {
-				if (basename($name, ".rdf") == $Nom_Etablissement) {
+
+				$file = explode(".", $name); 	
+
+				if ( $file[0] == $Nom_Etablissement && $file[1] == "rdf") {
 					echo "<br> Le fichier existe <br>";
+					$creer = false; 
 				}
-				else{
-					$myfile = fopen($file, "w"); 
-			    	fwrite($myfile,$data); 
-			    	fclose($myfile);
+				
+			}
+			if($creer) {
+				$myfile = fopen($fileName, "w"); 
+		    	fwrite($myfile,$data); 
+		    	fclose($myfile);
 
-			    	echo "Departement crée"; 
+		    	echo "Departement crée"; 
 
-				    $data = $graphAjout->serialise("rdfxml");
-			        if (!is_scalar($data)) {
-			            $data = var_export($data, true);
-			        }
+			    $data = $graphAjout->serialise("rdfxml");
+		        if (!is_scalar($data)) {
+		            $data = var_export($data, true);
+		        }
 
-				    $file = "ressource/".$labelEtablissement.".rdf"; 
-					$myfile = fopen($file, "w"); 
-					fwrite($myfile,$data); 
-					fclose($myfile);
+			    $file = "ressource/".$labelEtablissement.".rdf"; 
+				$myfile = fopen($file, "w"); 
+				fwrite($myfile,$data); 
+				fclose($myfile);
 
-				    echo "Etablissement modifie";
-				}
+			    echo "Etablissement modifie";
+
+			    $file = 'ressource/bibli.json'; 
+				$biblio = json_decode(file_get_contents($file));
+				$ajout = array ('type' => "departement", 'label' => $Nom_Etablissement, 'uri' => $uri);
+				array_push($biblio, $ajout); 
+				file_put_contents($file, json_encode($biblio));
+				
 			}  
 	    }
 	}
@@ -344,13 +412,14 @@ class ControleurCreation {
 	 // créer un Etablissement
 	public function creerEtablissement() {  
 		$Nom_Ville = null; 
+
 		if (isset($_POST['nom']) && isset($_POST['ville'])) {
 			$Nom_Ville = $_POST['nom']."_".$_POST['ville'];
 		}
 
 		if (!is_null($Nom_Ville)) {
 
-			$uri = __DIR__."/../ressource/".$Nom_Ville.".rdf"; 
+			$uri = ($this->racine).$Nom_Ville.".rdf"; 
 
 	        $graph = new EasyRdf_Graph();
 	        $graph->addResource($uri, "rdf:type", "etablissement:Etablissement");
@@ -361,32 +430,40 @@ class ControleurCreation {
 	        $graph->addLiteral($uri, "etablissement:departement", $_POST["departement"]);
 	        $graph->add($uri, "rdfs:label", $Nom_Ville);
 
-	        $file = __DIR__.'/../ressource/bibli.json'; 
-			$biblio = json_decode(file_get_contents($file));
-			$ajout = array ('type' => "etablissement", 'label' => $Nom_Ville, 'uri' => $uri);
-			array_push($biblio, $ajout); 
-			file_put_contents($file, json_encode($biblio));
-
 	        # Finally output the graph
 	        $data = $graph->serialise("rdfxml");
 	        if (!is_scalar($data)) {
 	            $data = var_export($data, true);
 	        }
 
-		    $file = "ressource/".$Nom_Ville.".rdf"; 
+	       	$creer = true; 
+		    $fileName = "ressource/".$Nom_Ville.".rdf"; 
 			$dir = scandir("ressource/");
 			foreach ($dir as $name) {
-				if (basename($name, ".rdf") == $Nom_Ville) {
-					echo "<br> Le fichier existe <br>";
-				}
-				else{
-					$myfile = fopen($file, "w"); 
-			    	fwrite($myfile,$data); 
-			    	fclose($myfile);
 
-			    	echo "Etablissement crée";
+				$file = explode(".", $name); 	
+
+				if ( $file[0] == $Nom_Ville && $file[1] == "rdf") {
+					echo "<br> Le fichier existe <br>";
+					$creer = false; 
 				}
+				
 			}
+
+			if($creer) {
+				$myfile = fopen($fileName, "w"); 
+			    fwrite($myfile,$data); 
+			    fclose($myfile);
+
+			    echo "Etablissement crée";
+
+				$file = 'ressource/bibli.json'; 
+				$biblio = json_decode(file_get_contents($file));
+				$ajout = array ('type' => "etablissement", 'label' => $Nom_Ville, 'uri' => $uri);
+				array_push($biblio, $ajout); 
+				file_put_contents($file, json_encode($biblio));
+			}
+
 	    }
 	}
 }
