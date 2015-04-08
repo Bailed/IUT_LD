@@ -32,6 +32,11 @@ class ControleurCreation {
 	        $graphAjout->addResource($groupe, "groupe:etudiant","http://localhost/IUT_LD/site/ressource/".$_POST['IdentifiantEtudiant'].".rdf");
 	        $labelGroupe = $graphAjout -> label(); 
 
+	        $file = __DIR__.'/../ressource/bibli.json'; 
+			$biblio = json_decode(file_get_contents($file));
+			$ajout = array ('type' => "etudiant", 'nom' => $_POST['IdentifiantEtudiant'], 'uri' => "http://localhost/IUT_LD/site/ressource/".$_POST['IdentifiantEtudiant'].".rdf");// how to add `number` automatic `+1`, make it to `4` with php code?
+			array_push($biblio, $ajout); 
+			file_put_contents($file, json_encode($biblio));
 
 	        # Finally output the graph
 
