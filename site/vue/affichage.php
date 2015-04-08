@@ -71,7 +71,6 @@
 					<form action="index.php" method="post">
 					nom : <input name="nom" type="text">   <br/>
 					etablissement : <input name="etablissementD" type="text">   <br/>
-					matiere : <input name="matiere" type="text">   <br/>
 					<input id="submit" name="departement" type="submit" value="soumettre">
 					</form>
 				</body>

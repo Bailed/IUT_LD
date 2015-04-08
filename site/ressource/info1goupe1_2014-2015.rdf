@@ -10,8 +10,12 @@
     <rdfs:label>info1goupe1_2014-2015</rdfs:label>
     <groupe:etudiant rdf:resource="http://localhost/IUT_LD/site/ressource/E134727S.rdf"/>
     <groupe:etudiant rdf:resource="http://localhost/IUT_LD/site/ressource/E134057P.rdf"/>
+<<<<<<< HEAD
     <groupe:etudiant rdf:resource="http://localhost/IUT_LD/site/ressource/E133756M.rdf"/>
     <groupe:etudiant rdf:resource="http://localhost/IUT_LD/site/ressource/E133756S.rdf"/>
+=======
+    <groupe:etudiant rdf:resource="http://localhost/IUT_LD/site/ressource/E13461P.rdf"/>
+>>>>>>> fbf20c1ff86d539ce4fbe314320e05e1c5e0bee5
   </groupe:Groupe>
 
 </rdf:RDF>
