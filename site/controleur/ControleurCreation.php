@@ -23,13 +23,16 @@ class ControleurCreation {
 	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$_POST['IdentifiantEtudiant'].".rdf", "etudiant:nom",$_POST["nom"]);
 	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$_POST['IdentifiantEtudiant'].".rdf", "etudiant:prenom", $_POST["prenom"]);
 	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$_POST['IdentifiantEtudiant'].".rdf", "etudiant:id", $_POST['IdentifiantEtudiant']);
-	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$_POST['IdentifiantEtudiant'].".rdf", "etudiant:groupe", $_POST['groupe']);
+	       
+	       	$groupe = $graph -> resource($_POST['groupe']); 
+	        $graph->add("http://localhost/IUT_LD/site/ressource/".$_POST['IdentifiantEtudiant'].".rdf", "etudiant:groupe", $groupe );
 	        $graph->add("http://localhost/IUT_LD/site/ressource/".$_POST['IdentifiantEtudiant'].".rdf", "rdfs:label", $_POST['IdentifiantEtudiant']);
 
-	        /*$graphAjout = EasyRdf_Graph::newAndLoad("http://localhost/IUT_LD/site/ressource/".$_POST['groupe']);
-	        $id = $graph->label();
-	        $graphAjout->addResource("http://localhost/IUT_LD/site/ressource/".$_POST['groupe'], "groupe:etudiant", $id);
-*/
+	        $graphAjout = EasyRdf_Graph::newAndLoad($groupe);
+	        $graphAjout->addResource($groupe, "groupe:etudiant","http://localhost/IUT_LD/site/ressource/".$_POST['IdentifiantEtudiant'].".rdf");
+	        $labelGroupe = $graphAjout -> label(); 
+
+
 	        # Finally output the graph
 
 	        $data = $graph->serialise("rdfxml");
@@ -51,7 +54,24 @@ class ControleurCreation {
 				}
 			}
 
-			echo "Etudiant crée";  
+			echo "Etudiant crée"; 
+
+			 $data = $graphAjout->serialise("rdfxml");
+	        if (!is_scalar($data)) {
+	            $data = var_export($data, true);
+	        }
+
+
+		    $file = "ressource/".$labelGroupe.".rdf"; 
+		    $dir = scandir("ressource/");
+			foreach ($dir as $name) {
+					$myfile = fopen($file, "w"); 
+			    	fwrite($myfile,$data); 
+			    	fclose($myfile);
+			}
+
+			echo "groupe modifie"; 
+			 
 	    }
 	}
 

@@ -17,15 +17,20 @@ class ControleurAffichage {
 
 		$graph -> dump();  
 
+        // affichage d'un étudiant 
         if ($graph->type() == "etudiant:Etudiant") {
 
           $id = $graph -> label($uri);
           $nom = $graph->getLiteral($uri, "etudiant:nom") ;
           $prenom = $graph->getLiteral($uri, "etudiant:prenom") ;
-          $groupe = $graph->getLiteral($uri, "etudiant:groupe") ;
+          $groupe = $graph->getResource($uri, "etudiant:groupe") ;
 
-          $EtudiantJson = array('etudiant' => array('id' =>(string) $id, 'nom' => (string) $nom, 'prenom' => (string) $prenom,'groupe' => (string) $groupe )) ;  
-   
+           
+          $graphGroupe = EasyRdf_Graph::newAndLoad($groupe);
+          $arrayGroupe = array ('nom' => (string) $graphGroupe -> getLiteral($groupe, "groupe:nom"), 'uri' => (string) $groupe); 
+          
+          $EtudiantJson = array('etudiant' => array('id' =>(string) $id, 'nom' => (string) $nom, 'prenom' => (string) $prenom,'groupe' => $arrayGroupe)) ;  
+
           return json_encode($EtudiantJson);  
 
         } elseif ($graph->type() == 'professeur:Professeur') {
@@ -44,6 +49,8 @@ class ControleurAffichage {
             $nom = $graph->getLiteral($uri, "groupe:nom") ;
             $annee = $graph->getLiteral($uri, "groupe:annee") ;
             $promo = $graph->getLiteral($uri, "groupe:promo") ;
+
+            for
 
             $groupeJson = array('groupe' => array('id' => (string)$id, 'nom' => (string)$nom, 'annee' => (string)$annee, 'promo' => (string)$promo )); 
 
