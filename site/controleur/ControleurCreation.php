@@ -63,12 +63,9 @@ class ControleurCreation {
 
 
 		    $file = "ressource/".$labelGroupe.".rdf"; 
-		    $dir = scandir("ressource/");
-			foreach ($dir as $name) {
-					$myfile = fopen($file, "w"); 
-			    	fwrite($myfile,$data); 
-			    	fclose($myfile);
-			}
+			$myfile = fopen($file, "w"); 
+			fwrite($myfile,$data); 
+			fclose($myfile);
 
 			echo "groupe modifie"; 
 			 
@@ -89,13 +86,16 @@ class ControleurCreation {
 	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Prenom.".rdf", "professeur:nom", $_POST['nom']);
 	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Prenom.".rdf", "professeur:prenom", $_POST['prenom']);
 	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Prenom.".rdf", "professeur:matiere", $_POST['matiere']);
-	        $graph->addResource("http://localhost/IUT_LD/site/ressource/".$Nom_Prenom.".rdf", "professeur:departement",$_POST['departement']);
+
+	        $departement =  $graph -> resource($_POST['departement']);
+	        $graph->addResource("http://localhost/IUT_LD/site/ressource/".$Nom_Prenom.".rdf", "professeur:departement", $departement);
 	        $graph->add("http://localhost/IUT_LD/site/ressource/".$Nom_Prenom.".rdf", "rdfs:label", $Nom_Prenom);
-/*
-	        $graphAjout = EasyRdf_Graph::newAndLoad("http://localhost/IUT_LD/site/ressource/".$_POST['departement']);
-	        $id = $graph->label();
-	        $graphAjout->addResource("http://localhost/IUT_LD/site/ressource/".$_POST['departement'], "departement:professeur", $id);
-*/
+
+	        $graphAjout = EasyRdf_Graph::newAndLoad($departement);
+	       	$graphAjout->addResource($departement, "departement:professeur","http://localhost/IUT_LD/site/ressource/".$Nom_Prenom.".rdf");
+	       	$graphAjout->addLiteral($departement, "departement:matiere", $_POST["matiere"]);
+	        $labelDepartement = $graphAjout -> label();
+
 	        # Finally output the graph
 
 	        $data = $graph->serialise("rdfxml");
@@ -118,7 +118,19 @@ class ControleurCreation {
 			}
 
 		    echo "Professeur crée";  
-	    }
+
+	    	$data = $graphAjout->serialise("rdfxml");
+	        if (!is_scalar($data)) {
+	            $data = var_export($data, true);
+	        }
+
+		    $file = "ressource/".$labelDepartement.".rdf"; 
+			$myfile = fopen($file, "w"); 
+			fwrite($myfile,$data); 
+			fclose($myfile);
+
+		    echo "Departement modifie";  
+		}
 	}
 
 	// créer un groupe
@@ -134,13 +146,15 @@ class ControleurCreation {
 	        $graph->addResource("http://localhost/IUT_LD/site/ressource/".$Nom_Annee.".rdf", "rdf:type", "groupe:Groupe");
 	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Annee.".rdf", "groupe:nom", $_POST['nom']);
 	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Annee.".rdf", "groupe:annee", $_POST['annee']);
-	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Annee.".rdf", "groupe:promo", $_POST['promo']);
+
+	        $promo = $graph -> resource($_POST['promo']);
+	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Annee.".rdf", "groupe:promo", $promo);
 	        $graph->add("http://localhost/IUT_LD/site/ressource/".$Nom_Annee.".rdf", "rdfs:label", $Nom_Annee);
 
-	   /*    	$graphAjout = EasyRdf_Graph::newAndLoad("http://localhost/IUT_LD/site/ressource/".$_POST['promo']);
-	        $id = $graph->label();
-	        $graphAjout->addResource("http://localhost/IUT_LD/site/ressource/".$_POST['promo'], "promo:groupe", $id);
-*/
+	        $graphAjout = EasyRdf_Graph::newAndLoad($promo);
+	        $graphAjout->addResource($promo, "promo:groupe","http://localhost/IUT_LD/site/ressource/".$Nom_Annee.".rdf");
+	        $labelPromo = $graphAjout -> label(); 
+
 	        # Finally output the graph
 
 	        $data = $graph->serialise("rdfxml");
@@ -161,7 +175,19 @@ class ControleurCreation {
 				}
 			}
 
-		    echo "Groupe crée";  
+		    echo "Groupe crée"; 
+
+		     $data = $graphAjout->serialise("rdfxml");
+	        if (!is_scalar($data)) {
+	            $data = var_export($data, true);
+	        }
+
+		    $file = "ressource/".$labelPromo.".rdf"; 
+			$myfile = fopen($file, "w"); 
+			fwrite($myfile,$data); 
+			fclose($myfile);
+
+		    echo "Promo modifie";  
 	    }
 	}
 
@@ -178,14 +204,14 @@ class ControleurCreation {
 	        $graph->addResource("http://localhost/IUT_LD/site/ressource/".$Nom_Annee.".rdf", "rdf:type", "promo:Promo");
 	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Annee.".rdf", "promo:nom", $_POST['nom']);
 	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Annee.".rdf", "promo:annee", $_POST['annee']);
-	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Annee.".rdf", "promo:departement", $_POST['departement']);
 
+	        $departement =  $graph -> resource($_POST['departement']);
+	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Annee.".rdf", "promo:departement", $departement);
 	        $graph->add("http://localhost/IUT_LD/site/ressource/".$Nom_Annee.".rdf", "rdfs:label", $Nom_Annee);
-/*
-	        $graphAjout = EasyRdf_Graph::newAndLoad("http://localhost/IUT_LD/site/ressource/".$_POST['departement']);
-	        $id = $graph->label();
-	        $graphAjout->addResource("http://localhost/IUT_LD/site/ressource/".$_POST['departement'], "departement:promo", $id);
-*/
+
+			$graphAjout = EasyRdf_Graph::newAndLoad($departement);
+	       	$graphAjout->addResource($departement, "departement:promo","http://localhost/IUT_LD/site/ressource/".$Nom_Annee.".rdf");
+	        $labelDepartement = $graphAjout -> label();
 	        # Finally output the graph
 
 	        $data = $graph->serialise("rdfxml");
@@ -206,14 +232,25 @@ class ControleurCreation {
 				}
 			} 
 
-		    echo "Promo crée";  
+		    echo "Promo crée"; 
+
+		    $data = $graphAjout->serialise("rdfxml");
+	        if (!is_scalar($data)) {
+	            $data = var_export($data, true);
+	        }
+
+		    $file = "ressource/".$labelDepartement.".rdf"; 
+			$myfile = fopen($file, "w"); 
+			fwrite($myfile,$data); 
+			fclose($myfile);
+
+		    echo "Departement modifie"; 
 	    }
 	}
 
 	// créer un departement
 	public function creerDepartement() {  
-		$Nom_Etablissement = null; 
-		echo "coucou"; 
+		$Nom_Etablissement = null;
 		if (isset($_POST['nom']) && isset($_POST['etablissementD'])) {
 			$Nom_Etablissement = $_POST['nom']."_".$_POST['etablissementD'];
 		}
@@ -223,14 +260,15 @@ class ControleurCreation {
 	        $graph = new EasyRdf_Graph();
 	        $graph->addResource("http://localhost/IUT_LD/site/ressource/".$Nom_Etablissement.".rdf", "rdf:type", "departement:Departement");
 	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Etablissement.".rdf", "departement:nom", $_POST['nom']);
-	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Etablissement.".rdf", "departement:etablissement", $_POST['etablissementD']);
-	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Etablissement.".rdf", "departement:matiere", $_POST['matiere']);
+
+	        $etablissement =  $graph -> resource($_POST['etablissementD']);
+	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Etablissement.".rdf", "departement:etablissement", $etablissement);
+	        //$graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Etablissement.".rdf", "departement:matiere", $_POST['matiere']);
 	        $graph->add("http://localhost/IUT_LD/site/ressource/".$Nom_Etablissement.".rdf", "rdfs:label", $Nom_Etablissement);
 
-	       /* $graphAjout = EasyRdf_Graph::newAndLoad("http://localhost/IUT_LD/site/ressource/".$_POST['etablissement']);
-	        $id = $graph->label();
-	        $graphAjout->addResource("http://localhost/IUT_LD/site/ressource/".$_POST['etablissement'], "etablissement:departement", $id);
-*/
+	       	$graphAjout = EasyRdf_Graph::newAndLoad($etablissement);
+	       	$graphAjout->addResource($etablissement, "etablissement:departement","http://localhost/IUT_LD/site/ressource/".$Nom_Etablissement.".rdf");
+	        $labelEtablissement = $graphAjout -> label();
 	        # Finally output the graph
 
 	        $data = $graph->serialise("rdfxml");
@@ -251,7 +289,19 @@ class ControleurCreation {
 				}
 			}
 
-		    echo "Departement crée";  
+		    echo "Departement crée"; 
+
+		    $data = $graphAjout->serialise("rdfxml");
+	        if (!is_scalar($data)) {
+	            $data = var_export($data, true);
+	        }
+
+		    $file = "ressource/".$labelEtablissement.".rdf"; 
+			$myfile = fopen($file, "w"); 
+			fwrite($myfile,$data); 
+			fclose($myfile);
+
+		    echo "Etablissement modifie";  
 	    }
 	}
 
@@ -272,8 +322,14 @@ class ControleurCreation {
 	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Ville.".rdf", "etablissement:adresse", $_POST['adresse']);
 	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Ville.".rdf", "etablissement:ville", $_POST['ville']);
 	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Ville.".rdf", "etablissement:codepostal", $_POST['codepostal']);
-	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Ville.".rdf", "etablissement:departement", $_POST['departement']);
+
+	        $departement =  $graph -> resource($_POST['departement']);
+	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Ville.".rdf", "etablissement:departement", $departement);
 	        $graph->add("http://localhost/IUT_LD/site/ressource/".$Nom_Ville.".rdf", "rdfs:label", $Nom_Ville);
+
+	        $graphAjout = EasyRdf_Graph::newAndLoad($departement);
+	       	$graphAjout->addResource($departement, "departement:professeur","http://localhost/IUT_LD/site/ressource/".$Nom_Ville.".rdf");
+	        $labelDepartement = $graphAjout -> label();
 
 	        # Finally output the graph
 
@@ -296,6 +352,18 @@ class ControleurCreation {
 			}
 
 		    echo "Etablissement crée";  
+
+		    $data = $graphAjout->serialise("rdfxml");
+	        if (!is_scalar($data)) {
+	            $data = var_export($data, true);
+	        }
+
+		    $file = "ressource/".$labelDepartement.".rdf"; 
+			$myfile = fopen($file, "w"); 
+			fwrite($myfile,$data); 
+			fclose($myfile);
+
+		    echo "Departement modifie"; 
 	    }
 	}
 
