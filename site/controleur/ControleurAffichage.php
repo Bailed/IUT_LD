@@ -50,9 +50,16 @@ class ControleurAffichage {
             $annee = $graph->getLiteral($uri, "groupe:annee") ;
             $promo = $graph->getLiteral($uri, "groupe:promo") ;
 
-            for
+            $listEtudiant = array(); 
 
-            $groupeJson = array('groupe' => array('id' => (string)$id, 'nom' => (string)$nom, 'annee' => (string)$annee, 'promo' => (string)$promo )); 
+            foreach (($graph->all($uri,'groupe:etudiant')) as $etudiant) {
+                $graphEtudiant = EasyRdf_Graph::newAndLoad($etudiant);
+                $arrayEtudiant = array ('nom' => (string) $graphEtudiant -> label(), 'uri' => (string) $etudiant); 
+                array_push($listEtudiant, $arrayEtudiant);
+            }
+        
+
+            $groupeJson = array('groupe' => array('id' => (string)$id, 'nom' => (string)$nom, 'annee' => (string)$annee, 'promo' => (string)$promo, 'etudiant' => $listEtudiant )); 
 
             return json_encode($groupeJson);
 
