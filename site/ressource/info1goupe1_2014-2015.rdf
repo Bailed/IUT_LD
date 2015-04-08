@@ -11,6 +11,7 @@
     <groupe:etudiant rdf:resource="http://localhost/IUT_LD/site/ressource/E133756M.rdf"/>
     <groupe:etudiant rdf:resource="http://localhost/IUT_LD/site/ressource/E134727S.rdf"/>
     <groupe:etudiant rdf:resource="http://localhost/IUT_LD/site/ressource/E134057P.rdf"/>
+    <groupe:etudiant rdf:resource="http://localhost/IUT_LD/site/ressource/E13461P.rdf"/>
   </groupe:Groupe>
 
 </rdf:RDF>
