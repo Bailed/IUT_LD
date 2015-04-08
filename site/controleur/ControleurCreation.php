@@ -14,7 +14,7 @@ class ControleurCreation {
 	public function creerEtudiant() {  
 		if (isset($_POST['IdentifiantEtudiant'])) {
 
-			$uri = __DIR__."/../ressource/".$_POST['IdentifiantEtudiant']."rdf"; 
+			$uri = __DIR__."/../ressource/".$_POST['IdentifiantEtudiant'].".rdf"; 
 
 	        $graph = new EasyRdf_Graph();
 	        $graph->addResource($uri, "rdf:type", "etudiant:Etudiant");
@@ -82,7 +82,7 @@ class ControleurCreation {
 
 		if (!is_null($Nom_Prenom)) {
 
-			$uri = __DIR__."/../ressource/".$Nom_Prenom."rdf"; 
+			$uri = __DIR__."/../ressource/".$Nom_Prenom.".rdf"; 
 
 	        $graph = new EasyRdf_Graph();
 	        $graph->addResource($uri, "rdf:type", "professeur:Professeur");
@@ -156,7 +156,7 @@ class ControleurCreation {
 
 		if (!is_null($Nom_Annee)) {
 
-	        $uri = __DIR__."/../ressource/".$Nom_Annee."rdf"; 
+	        $uri = __DIR__."/../ressource/".$Nom_Annee.".rdf"; 
 
 	        $graph->addResource($uri, "rdf:type", "groupe:Groupe");
 	        $graph->addLiteral($uri, "groupe:nom", $_POST['nom']);
@@ -221,7 +221,7 @@ class ControleurCreation {
 
 		if (!is_null($Nom_Annee)) {
 
-			$uri = __DIR__."/../ressource/".$Nom_Annee."rdf";
+			$uri = __DIR__."/../ressource/".$Nom_Annee.".rdf";
 
 	        $graph = new EasyRdf_Graph();
 	        $graph->addResource($uri, "rdf:type", "promo:Promo");
@@ -290,7 +290,7 @@ class ControleurCreation {
 
 		if (!is_null($Nom_Etablissement)) {
 
-			$uri = __DIR__."/../ressource/".$Nom_Etablissement."rdf"; 
+			$uri = __DIR__."/../ressource/".$Nom_Etablissement.".rdf"; 
 	        
 	        $graph->addResource($uri, "rdf:type", "departement:Departement");
 	        $graph->addLiteral($uri, "departement:nom", $_POST['nom']);
@@ -350,7 +350,7 @@ class ControleurCreation {
 
 		if (!is_null($Nom_Ville)) {
 
-			$uri = __DIR__."/../ressource/".$Nom_Ville."rdf"; 
+			$uri = __DIR__."/../ressource/".$Nom_Ville.".rdf"; 
 
 	        $graph = new EasyRdf_Graph();
 	        $graph->addResource($uri, "rdf:type", "etablissement:Etablissement");
@@ -358,13 +358,8 @@ class ControleurCreation {
 	        $graph->addLiteral($uri, "etablissement:adresse", $_POST['adresse']);
 	        $graph->addLiteral($uri, "etablissement:ville", $_POST['ville']);
 	        $graph->addLiteral($uri, "etablissement:codepostal", $_POST['codepostal']);
-	        $departement =  $graph -> resource($_POST['departement']);
-	        $graph->addLiteral($uri, "etablissement:departement", $departement);
+	        $graph->addLiteral($uri, "etablissement:departement", $_POST["departement"]);
 	        $graph->add($uri, "rdfs:label", $Nom_Ville);
-
-	        $graphAjout = EasyRdf_Graph::newAndLoad($departement);
-	       	$graphAjout->addResource($departement, "departement:professeur",$uri);
-	        $labelDepartement = $graphAjout -> label();
 
 	        $file = __DIR__.'/../ressource/bibli.json'; 
 			$biblio = json_decode(file_get_contents($file));
@@ -389,20 +384,7 @@ class ControleurCreation {
 			    	fwrite($myfile,$data); 
 			    	fclose($myfile);
 
-			    	echo "Etablissement crée";  
-
-				    $data = $graphAjout->serialise("rdfxml");
-			        if (!is_scalar($data)) {
-			            $data = var_export($data, true);
-			        }
-
-				    $file = "ressource/".$labelDepartement.".rdf"; 
-					$myfile = fopen($file, "w"); 
-					fwrite($myfile,$data); 
-					fclose($myfile);
-
-				    echo "Departement modifie"; 
-
+			    	echo "Etablissement crée";
 				}
 			}
 	    }
