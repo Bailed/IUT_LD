@@ -1,8 +1,8 @@
 <?php
 
 set_include_path(get_include_path() . PATH_SEPARATOR . 'modele/');
-	require_once "/../modele/EasyRdf.php";
-    require_once "/../modele/html_tag_helpers.php";
+	require_once "EasyRdf.php";
+    require_once "html_tag_helpers.php";
 
 
 class ControleurCreation {
@@ -19,17 +19,17 @@ class ControleurCreation {
 			echo $_POST["nom"]; 
 
 	        $graph = new EasyRdf_Graph();
-	        $graph->addResource("http://localhost/IUT_LD/site/ressource/".$_POST['IdentifiantEtudiant'].".rdf", "rdf:type", "etudiant:Etudiant");
-	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$_POST['IdentifiantEtudiant'].".rdf", "etudiant:nom",$_POST["nom"]);
-	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$_POST['IdentifiantEtudiant'].".rdf", "etudiant:prenom", $_POST["prenom"]);
-	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$_POST['IdentifiantEtudiant'].".rdf", "etudiant:id", $_POST['IdentifiantEtudiant']);
+	        $graph->addResource("http://localhost/~MBP-0/IUT_LD/site/ressource/".$_POST['IdentifiantEtudiant'].".rdf", "rdf:type", "etudiant:Etudiant");
+	        $graph->addLiteral("http://localhost/~MBP-0/IUT_LD/site/ressource/".$_POST['IdentifiantEtudiant'].".rdf", "etudiant:nom",$_POST["nom"]);
+	        $graph->addLiteral("http://localhost/~MBP-0/IUT_LD/site/ressource/".$_POST['IdentifiantEtudiant'].".rdf", "etudiant:prenom", $_POST["prenom"]);
+	        $graph->addLiteral("http://localhost/~MBP-0/IUT_LD/site/ressource/".$_POST['IdentifiantEtudiant'].".rdf", "etudiant:id", $_POST['IdentifiantEtudiant']);
 	       
 	       	$groupe = $graph -> resource($_POST['groupe']); 
-	        $graph->add("http://localhost/IUT_LD/site/ressource/".$_POST['IdentifiantEtudiant'].".rdf", "etudiant:groupe", $groupe );
-	        $graph->add("http://localhost/IUT_LD/site/ressource/".$_POST['IdentifiantEtudiant'].".rdf", "rdfs:label", $_POST['IdentifiantEtudiant']);
+	        $graph->add("http://localhost/~MBP-0/IUT_LD/site/ressource/".$_POST['IdentifiantEtudiant'].".rdf", "etudiant:groupe", $groupe );
+	        $graph->add("http://localhost/~MBP-0/IUT_LD/site/ressource/".$_POST['IdentifiantEtudiant'].".rdf", "rdfs:label", $_POST['IdentifiantEtudiant']);
 
 	        $graphAjout = EasyRdf_Graph::newAndLoad($groupe);
-	        $graphAjout->addResource($groupe, "groupe:etudiant","http://localhost/IUT_LD/site/ressource/".$_POST['IdentifiantEtudiant'].".rdf");
+	        $graphAjout->addResource($groupe, "groupe:etudiant","http://localhost/~MBP-0/IUT_LD/site/ressource/".$_POST['IdentifiantEtudiant'].".rdf");
 	        $labelGroupe = $graphAjout -> label(); 
 
 
@@ -82,17 +82,17 @@ class ControleurCreation {
 		if (!is_null($Nom_Prenom)) {
 
 	        $graph = new EasyRdf_Graph();
-	        $graph->addResource("http://localhost/IUT_LD/site/ressource/".$Nom_Prenom.".rdf", "rdf:type", "professeur:Professeur");
-	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Prenom.".rdf", "professeur:nom", $_POST['nom']);
-	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Prenom.".rdf", "professeur:prenom", $_POST['prenom']);
-	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Prenom.".rdf", "professeur:matiere", $_POST['matiere']);
+	        $graph->addResource("http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Prenom.".rdf", "rdf:type", "professeur:Professeur");
+	        $graph->addLiteral("http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Prenom.".rdf", "professeur:nom", $_POST['nom']);
+	        $graph->addLiteral("http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Prenom.".rdf", "professeur:prenom", $_POST['prenom']);
+	        $graph->addLiteral("http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Prenom.".rdf", "professeur:matiere", $_POST['matiere']);
 
 	        $departement =  $graph -> resource($_POST['departement']);
-	        $graph->addResource("http://localhost/IUT_LD/site/ressource/".$Nom_Prenom.".rdf", "professeur:departement", $departement);
-	        $graph->add("http://localhost/IUT_LD/site/ressource/".$Nom_Prenom.".rdf", "rdfs:label", $Nom_Prenom);
+	        $graph->addResource("http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Prenom.".rdf", "professeur:departement", $departement);
+	        $graph->add("http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Prenom.".rdf", "rdfs:label", $Nom_Prenom);
 
 	        $graphAjout = EasyRdf_Graph::newAndLoad($departement);
-	       	$graphAjout->addResource($departement, "departement:professeur","http://localhost/IUT_LD/site/ressource/".$Nom_Prenom.".rdf");
+	       	$graphAjout->addResource($departement, "departement:professeur","http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Prenom.".rdf");
 	       	$graphAjout->addLiteral($departement, "departement:matiere", $_POST["matiere"]);
 	        $labelDepartement = $graphAjout -> label();
 
@@ -143,16 +143,16 @@ class ControleurCreation {
 		if (!is_null($Nom_Annee)) {
 
 	        $graph = new EasyRdf_Graph();
-	        $graph->addResource("http://localhost/IUT_LD/site/ressource/".$Nom_Annee.".rdf", "rdf:type", "groupe:Groupe");
-	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Annee.".rdf", "groupe:nom", $_POST['nom']);
-	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Annee.".rdf", "groupe:annee", $_POST['annee']);
+	        $graph->addResource("http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Annee.".rdf", "rdf:type", "groupe:Groupe");
+	        $graph->addLiteral("http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Annee.".rdf", "groupe:nom", $_POST['nom']);
+	        $graph->addLiteral("http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Annee.".rdf", "groupe:annee", $_POST['annee']);
 
 	        $promo = $graph -> resource($_POST['promo']);
-	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Annee.".rdf", "groupe:promo", $promo);
-	        $graph->add("http://localhost/IUT_LD/site/ressource/".$Nom_Annee.".rdf", "rdfs:label", $Nom_Annee);
+	        $graph->addLiteral("http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Annee.".rdf", "groupe:promo", $promo);
+	        $graph->add("http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Annee.".rdf", "rdfs:label", $Nom_Annee);
 
 	        $graphAjout = EasyRdf_Graph::newAndLoad($promo);
-	        $graphAjout->addResource($promo, "promo:groupe","http://localhost/IUT_LD/site/ressource/".$Nom_Annee.".rdf");
+	        $graphAjout->addResource($promo, "promo:groupe","http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Annee.".rdf");
 	        $labelPromo = $graphAjout -> label(); 
 
 	        # Finally output the graph
@@ -201,16 +201,16 @@ class ControleurCreation {
 		if (!is_null($Nom_Annee)) {
 
 	        $graph = new EasyRdf_Graph();
-	        $graph->addResource("http://localhost/IUT_LD/site/ressource/".$Nom_Annee.".rdf", "rdf:type", "promo:Promo");
-	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Annee.".rdf", "promo:nom", $_POST['nom']);
-	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Annee.".rdf", "promo:annee", $_POST['annee']);
+	        $graph->addResource("http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Annee.".rdf", "rdf:type", "promo:Promo");
+	        $graph->addLiteral("http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Annee.".rdf", "promo:nom", $_POST['nom']);
+	        $graph->addLiteral("http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Annee.".rdf", "promo:annee", $_POST['annee']);
 
 	        $departement =  $graph -> resource($_POST['departement']);
-	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Annee.".rdf", "promo:departement", $departement);
-	        $graph->add("http://localhost/IUT_LD/site/ressource/".$Nom_Annee.".rdf", "rdfs:label", $Nom_Annee);
+	        $graph->addLiteral("http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Annee.".rdf", "promo:departement", $departement);
+	        $graph->add("http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Annee.".rdf", "rdfs:label", $Nom_Annee);
 
 			$graphAjout = EasyRdf_Graph::newAndLoad($departement);
-	       	$graphAjout->addResource($departement, "departement:promo","http://localhost/IUT_LD/site/ressource/".$Nom_Annee.".rdf");
+	       	$graphAjout->addResource($departement, "departement:promo","http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Annee.".rdf");
 	        $labelDepartement = $graphAjout -> label();
 	        # Finally output the graph
 
@@ -258,16 +258,16 @@ class ControleurCreation {
 		if (!is_null($Nom_Etablissement)) {
 
 	        $graph = new EasyRdf_Graph();
-	        $graph->addResource("http://localhost/IUT_LD/site/ressource/".$Nom_Etablissement.".rdf", "rdf:type", "departement:Departement");
-	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Etablissement.".rdf", "departement:nom", $_POST['nom']);
+	        $graph->addResource("http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Etablissement.".rdf", "rdf:type", "departement:Departement");
+	        $graph->addLiteral("http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Etablissement.".rdf", "departement:nom", $_POST['nom']);
 
 	        $etablissement =  $graph -> resource($_POST['etablissementD']);
-	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Etablissement.".rdf", "departement:etablissement", $etablissement);
-	        //$graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Etablissement.".rdf", "departement:matiere", $_POST['matiere']);
-	        $graph->add("http://localhost/IUT_LD/site/ressource/".$Nom_Etablissement.".rdf", "rdfs:label", $Nom_Etablissement);
+	        $graph->addLiteral("http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Etablissement.".rdf", "departement:etablissement", $etablissement);
+	        //$graph->addLiteral("http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Etablissement.".rdf", "departement:matiere", $_POST['matiere']);
+	        $graph->add("http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Etablissement.".rdf", "rdfs:label", $Nom_Etablissement);
 
 	       	$graphAjout = EasyRdf_Graph::newAndLoad($etablissement);
-	       	$graphAjout->addResource($etablissement, "etablissement:departement","http://localhost/IUT_LD/site/ressource/".$Nom_Etablissement.".rdf");
+	       	$graphAjout->addResource($etablissement, "etablissement:departement","http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Etablissement.".rdf");
 	        $labelEtablissement = $graphAjout -> label();
 	        # Finally output the graph
 
@@ -317,18 +317,18 @@ class ControleurCreation {
 		if (!is_null($Nom_Ville)) {
 
 	        $graph = new EasyRdf_Graph();
-	        $graph->addResource("http://localhost/IUT_LD/site/ressource/".$Nom_Ville.".rdf", "rdf:type", "etablissement:Etablissement");
-	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Ville.".rdf", "etablissement:nom", $_POST['nom']);
-	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Ville.".rdf", "etablissement:adresse", $_POST['adresse']);
-	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Ville.".rdf", "etablissement:ville", $_POST['ville']);
-	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Ville.".rdf", "etablissement:codepostal", $_POST['codepostal']);
+	        $graph->addResource("http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Ville.".rdf", "rdf:type", "etablissement:Etablissement");
+	        $graph->addLiteral("http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Ville.".rdf", "etablissement:nom", $_POST['nom']);
+	        $graph->addLiteral("http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Ville.".rdf", "etablissement:adresse", $_POST['adresse']);
+	        $graph->addLiteral("http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Ville.".rdf", "etablissement:ville", $_POST['ville']);
+	        $graph->addLiteral("http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Ville.".rdf", "etablissement:codepostal", $_POST['codepostal']);
 
 	        $departement =  $graph -> resource($_POST['departement']);
-	        $graph->addLiteral("http://localhost/IUT_LD/site/ressource/".$Nom_Ville.".rdf", "etablissement:departement", $departement);
-	        $graph->add("http://localhost/IUT_LD/site/ressource/".$Nom_Ville.".rdf", "rdfs:label", $Nom_Ville);
+	        $graph->addLiteral("http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Ville.".rdf", "etablissement:departement", $departement);
+	        $graph->add("http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Ville.".rdf", "rdfs:label", $Nom_Ville);
 
 	        $graphAjout = EasyRdf_Graph::newAndLoad($departement);
-	       	$graphAjout->addResource($departement, "departement:professeur","http://localhost/IUT_LD/site/ressource/".$Nom_Ville.".rdf");
+	       	$graphAjout->addResource($departement, "departement:professeur","http://localhost/~MBP-0/IUT_LD/site/ressource/".$Nom_Ville.".rdf");
 	        $labelDepartement = $graphAjout -> label();
 
 	        # Finally output the graph
