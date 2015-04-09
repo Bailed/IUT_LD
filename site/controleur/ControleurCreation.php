@@ -75,7 +75,7 @@ class ControleurCreation {
 
 				$file = 'ressource/bibli.json'; 
 				$biblio = json_decode(file_get_contents($file));
-				$ajout = array ('type' => "etudiant", 'label' => $idetu, 'uri' => $uri);
+				$ajout = array ('type' => "etudiant", 'label' => $idetu, 'nom' => strtoupper($_POST['nom'])." ".ucfirst(strtolower($_POST['prenom'])),'uri' => $uri);
 				array_push($biblio, $ajout); 
 				file_put_contents($file, json_encode($biblio));
 			}			 
@@ -84,8 +84,6 @@ class ControleurCreation {
 
 	// créer un professeur
 	public function creerProfesseur() { 
-
-		$uri = ($this->racine).$Nom_Ville.".rdf"; 
 
 		$Nom_Prenom = null; 
 		if (isset($_POST['nom']) && isset($_POST['prenom'])) {

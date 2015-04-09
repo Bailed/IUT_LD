@@ -59,7 +59,7 @@ class ControleurAffichage {
 
             foreach (($graph->all($uri,'groupe:etudiant')) as $etudiant) {
                 $graphEtudiant = EasyRdf_Graph::newAndLoad($etudiant);
-                $arrayEtudiant = array ('nom' => (string) $graphEtudiant -> label(), 'uri' => (string) $etudiant); 
+                $arrayEtudiant = array ('nom' => (string) (($graphEtudiant -> getLiteral($etudiant, "etudiant:nom"))." ".($graphEtudiant -> getLiteral($etudiant, "etudiant:prenom"))), 'uri' => (string) $etudiant); 
                 array_push($listEtudiant, $arrayEtudiant);
             }
 
