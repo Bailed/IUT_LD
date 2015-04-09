@@ -1,18 +1,12 @@
-app.controller('MainCtrl', function($scope) {
-		$scope.reverse = false;
-		$scope.maColonne='id';
-		$scope.tris = [];
-		$scope.tris['id']= false;
-		$scope.tris['name']=false;
-
+app.controller('MainCtrl', function($scope, $http) {
 		
-		$scope.donnees = [{id:'E746549E',name:'aaa'},
-			{id:'E128949G',name:'bbb'},
-			{id:'E386549J',name:'zzz'},
-			{id:'E499549L',name:'yay'},
-			{id:'E129949L',name:'ybb'},
-			{id:'E183549K',name:'zba'},
-			{id:'E128549E',name:'yyy'}];
+
+
+		$http.get('ressource/bibli.json')
+       .then(function(res){
+          $scope.donnees = res.data;                
+        });
+
 
 			$scope.reverseOrder = function(col) {
 				$scope.maColonne = col;

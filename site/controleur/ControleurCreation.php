@@ -10,7 +10,7 @@ class ControleurCreation {
 	private $racine; 
 
 	public function __construct(){ 
-		$this -> racine ="http://localhost/IUT_LD/site/ressource/"; 
+		$this -> racine ="http://localhost/~MBP-0/IUT_LD/site/ressource/"; 
 	}
 
   	// créer un étudiant

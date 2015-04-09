@@ -3,13 +3,12 @@
          xmlns:promo="http://localhost/promo"
          xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
 
-  <promo:Promo rdf:about="http://localhost/IUT_LD/site/ressource/info2_2014-2015.rdf">
+  <promo:Promo rdf:about="http://localhost/~MBP-0/IUT_LD/site/ressource/info2_2014-2015.rdf">
     <promo:nom>info2</promo:nom>
     <promo:annee>2014-2015</promo:annee>
-    <promo:departement rdf:resource="http://localhost/IUT_LD/site/ressource/informatique_IUT_Nantes.rdf"/>
+    <promo:departement rdf:resource="http://localhost/~MBP-0/IUT_LD/site/ressource/informatique_IUT_NANTES.rdf"/>
     <rdfs:label>info2_2014-2015</rdfs:label>
-    <promo:groupe rdf:resource="http://localhost/IUT_LD/site/ressource/info2_groupe1_2014-2015.rdf"/>
-    <promo:groupe rdf:resource="http://localhost/IUT_LD/site/ressource/info2_groupe2_2014-2015.rdf"/>
+    <promo:groupe rdf:resource="http://localhost/~MBP-0/IUT_LD/site/ressource/info2_groupe2_2014-2015.rdf"/>
   </promo:Promo>
 
 </rdf:RDF>
