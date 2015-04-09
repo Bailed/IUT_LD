@@ -7,7 +7,7 @@
     <etudiant:nom>PICARD</etudiant:nom>
     <etudiant:prenom>Thomas</etudiant:prenom>
     <etudiant:id>E133756M</etudiant:id>
-    <etudiant:groupe rdf:resource="http://localhost/IUT_LD/site/ressource/info1goupe1_2014-2015.rdf"/>
+    <etudiant:groupe rdf:resource="http://localhost/IUT_LD/site/ressource/info2_groupe1_2014-2015.rdf"/>
     <rdfs:label>E133756M</rdfs:label>
   </etudiant:Etudiant>
 

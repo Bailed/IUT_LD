@@ -1,0 +1,11 @@
+[{"type":"etablissement","label":"IUT_Nantes","uri":"http:\/\/localhost\/IUT_LD\/site\/ressource\/IUT_Nantes.rdf"},
+{"type":"departement","label":"informatique_IUT_Nantes","uri":"http:\/\/localhost\/IUT_LD\/site\/ressource\/informatique_IUT_Nantes.rdf"},
+{"type":"departement","label":"GEA_IUT_Nantes","uri":"http:\/\/localhost\/IUT_LD\/site\/ressource\/GEA_IUT_Nantes.rdf"},
+{"type":"promo","label":"info1_2014-2015","uri":"http:\/\/localhost\/IUT_LD\/site\/ressource\/info1_2014-2015.rdf"},
+{"type":"promo","label":"info2_2014-2015","uri":"http:\/\/localhost\/IUT_LD\/site\/ressource\/info2_2014-2015.rdf"},
+{"type":"groupe","label":"info2_groupe1_2014-2015","uri":"http:\/\/localhost\/IUT_LD\/site\/ressource\/info2_groupe1_2014-2015.rdf"},
+{"type":"groupe","label":"info2_groupe2_2014-2015","uri":"http:\/\/localhost\/IUT_LD\/site\/ressource\/info2_groupe2_2014-2015.rdf"},
+{"type":"etudiant","label":"E133756M","uri":"http:\/\/localhost\/IUT_LD\/site\/ressource\/E133756M.rdf"},
+{"type":"etudiant","label":"E134057P","uri":"http:\/\/localhost\/IUT_LD\/site\/ressource\/E134057P.rdf"},
+{"type":"professeur","label":"Nachouki_Gilles","uri":"http:\/\/localhost\/IUT_LD\/site\/ressource\/Nachouki_Gilles.rdf"},
+{"type":"professeur","label":"REMM_Jean-Francois","uri":"http:\/\/localhost\/IUT_LD\/site\/ressource\/REMM_Jean-Francois.rdf"}]

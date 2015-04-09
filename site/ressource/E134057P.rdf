@@ -4,10 +4,10 @@
          xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
 
   <etudiant:Etudiant rdf:about="http://localhost/IUT_LD/site/ressource/E134057P.rdf">
-    <etudiant:nom>LEVRARD</etudiant:nom>
-    <etudiant:prenom>Martin</etudiant:prenom>
+    <etudiant:nom>QUEMARD</etudiant:nom>
+    <etudiant:prenom>Mael</etudiant:prenom>
     <etudiant:id>E134057P</etudiant:id>
-    <etudiant:groupe rdf:resource="http://localhost/IUT_LD/site/ressource/info1goupe1_2014-2015.rdf"/>
+    <etudiant:groupe rdf:resource="http://localhost/IUT_LD/site/ressource/info2_groupe1_2014-2015.rdf"/>
     <rdfs:label>E134057P</rdfs:label>
   </etudiant:Etudiant>
 

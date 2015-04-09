@@ -65,6 +65,7 @@ set_include_path(get_include_path() . PATH_SEPARATOR . 'vue/');
 				elseif ($_POST["create"] == "departement") {
 						$this->ctrlCreation->creerDepartement();
 				}
+
 			}
 
 			elseif (isset($_GET["recherche"])) {

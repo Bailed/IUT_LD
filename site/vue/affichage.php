@@ -4,6 +4,7 @@
 	{
 		function genereVueEtudiant()
 		{
+<<<<<<< HEAD
 			include 'model/model.php';
 			include 'includes/head.php';
 			include 'includes/nav.php';
@@ -35,6 +36,23 @@
 			include 'includes/footer.php';
 			include 'includes/script.php';
 			include 'includes/foot.php';
+=======
+			?><html>
+				<body>
+					<form action="index.php" method="post">
+					id : <input id="IdentifiantEtudiant" name="IdentifiantEtudiant" type="text">   <br/>
+					nom : <input name="nom" type="text">   <br/>
+					prenom : <input name="prenom" type="text">   <br/>
+					<select name="groupe">
+						<option>http://localhost/IUT_LD/site/ressource/info2_groupe1_2014-2015.rdf</option>
+						<option>groupe 2</option>
+						<option>groupe 3</option>
+					</select><br>
+					<input id="submit" name="etudiant" type="submit" value="soumettre">
+					</form>
+				</body>
+			</html><?php
+>>>>>>> dadc16921a764c0c306fdb4e5aa8def28a151610
 		}
 
 		function genereVueGroupe()
@@ -127,6 +145,7 @@
 
 		function genereVueDepartement()
 		{
+<<<<<<< HEAD
 			include 'model/model.php';
 			include 'includes/head.php';
 			include 'includes/nav.php';
@@ -141,6 +160,14 @@
 					etablissement : <input class="form-control" name="etablissementD" type="text">   <br/>
 					matiere : <input class="form-control" name="matiere" type="text">   <br/>
 					<input class="form-control" id="submit" name="departement" type="submit" value="soumettre">
+=======
+			?><html>
+				<body>
+					<form action="index.php" method="post">
+					nom : <input name="nom" type="text">   <br/>
+					etablissement : <input name="etablissementD" type="text">   <br/>
+					<input id="submit" name="departement" type="submit" value="soumettre">
+>>>>>>> dadc16921a764c0c306fdb4e5aa8def28a151610
 					</form>
 
 							</div>

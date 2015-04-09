@@ -3,12 +3,12 @@
          xmlns:professeur="http://localhost/professeur"
          xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
 
-  <professeur:Professeur rdf:about="http://localhost/IUT_LD/site/ressource/Nachouki_Gilles.rdf">
-    <professeur:nom>Nachouki</professeur:nom>
-    <professeur:prenom>Gilles</professeur:prenom>
-    <professeur:matiere>BD</professeur:matiere>
+  <professeur:Professeur rdf:about="http://localhost/IUT_LD/site/ressource/REMM_Jean-Francois.rdf">
+    <professeur:nom>REMM</professeur:nom>
+    <professeur:prenom>Jean-Francois</professeur:prenom>
+    <professeur:matiere>programmation</professeur:matiere>
     <professeur:departement rdf:resource="http://localhost/IUT_LD/site/ressource/informatique_IUT_Nantes.rdf"/>
-    <rdfs:label>Nachouki_Gilles</rdfs:label>
+    <rdfs:label>REMM_Jean-Francois</rdfs:label>
   </professeur:Professeur>
 
 </rdf:RDF>
