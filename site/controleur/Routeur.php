@@ -19,8 +19,9 @@ set_include_path(get_include_path() . PATH_SEPARATOR . 'vue/');
 		function __construct()
 		{
 			/*$this->ctrlAffichage = new ControleurAffichage();*/
-			$this->ctrlCreation = new ControleurCreation(); 
-			$this->affichage = new affichage();
+			$this->ctrlCreation = new ControleurCreation(); 			
+			$this->affichage = new affichage();		
+
 		}
 
 		public function router()

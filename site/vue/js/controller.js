@@ -1,11 +1,11 @@
 app.controller('MainCtrl', function($scope, $http) {
-		
-
 
 		$http.get('ressource/bibli.json')
        .then(function(res){
-          $scope.donnees = res.data;                
+          $scope.donnees = res.data;            
         });
+
+       
 
 
 			$scope.reverseOrder = function(col) {

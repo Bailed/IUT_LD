@@ -18,9 +18,13 @@
 									<label>ID :</label> <input class="form-control" id="IdentifiantEtudiant" name="IdentifiantEtudiant" type="text">   <br/>
 									<label>nom :</label> <input class="form-control" name="nom" type="text">   <br/>
 									<label>prénom :</label> <input class="form-control" name="prenom" type="text">   <br/>
-									<input class="form-control" name="groupe" type="text">
+									<div ng-controller="MainCtrl">
+										<select  type="text" name="groupe" id="filtre" ng-model="selectedItem">
+											<option style="display:none" value="">Selectionner un groupe</option>
+											<option ng-repeat="item in donnees | filter:item.type = 'groupe'" value="{{item.uri}}">{{item.label}}</option>
+										</select>   
+									</div>
 									<input class="form-control" id="submit" name="etudiant" type="submit" value="soumettre">
-							
 								</form>
 							</div>
 						</div>
@@ -48,7 +52,12 @@
 								<input type="hidden" name="create" value="groupe">
 									nom : <input class="form-control" name="nom" type="text">   <br/>
 									annee : <input class="form-control" name="annee" type="text">   <br/>
-									promo : <input class="form-control" name="promo" type="text">   <br/>
+									<div ng-controller="MainCtrl">
+										<select class="selectpicker" type="text" name="groupe" id="filtre" ng-model="selectedItem">
+											<option style="display:none" value="">Selectionner promotion</option>
+											<option ng-repeat="item in donnees | filter:item.type = 'promo'" value="{{item.uri}}">{{item.label}}</option>
+										</select>   
+									</div>
 									<input class="form-control" id="submit" name="groupe" type="submit" value="soumettre">
 							
 								</form>
@@ -79,7 +88,12 @@
 					nom : <input class="form-control" name="nom" type="text">   <br/>
 					prenom : <input class="form-control" name="prenom" type="text">   <br/>
 					matiere : <input class="form-control" name="matiere" type="text">   <br/>
-					departement : <input class="form-control" name="departement" type="text">   <br/>
+					<div ng-controller="MainCtrl">
+						<select class="selectpicker" type="text" name="groupe" id="filtre" ng-model="selectedItem">
+							<option style="display:none" value="">Selectionner département</option>
+							<option ng-repeat="item in donnees | filter:item.type = 'departement'" value="{{item.uri}}">{{item.label}}</option>
+						</select>   
+					</div>
 					<input class="form-control" id="submit" name="professeur" type="submit" value="soumettre">
 					</form>
 
@@ -109,7 +123,12 @@
 								<input type="hidden" name="create" value="promo">
 					nom : <input class="form-control" name="nom" type="text">   <br/>
 					annee : <input class="form-control" name="annee" type="text">   <br/>
-					departement : <input class="form-control" name="departement" type="text">   <br/>
+					<div ng-controller="MainCtrl">
+						<select class="selectpicker" type="text" name="groupe" id="filtre" ng-model="selectedItem">
+							<option style="display:none" value="">Selectionner département</option>
+							<option ng-repeat="item in donnees | filter:item.type = 'departement'" value="{{item.uri}}">{{item.label}}</option>
+						</select>   
+					</div>
 					<input class="form-control" id="submit" name="promo" type="submit" value="soumettre">
 					</form>
 
@@ -138,8 +157,13 @@
 								<form action="index.php" method="post">
 								<input type="hidden" name="create" value="departement">
 					nom : <input class="form-control" name="nom" type="text">   <br/>
-					etablissement : <input class="form-control" name="etablissementD" type="text">   <br/>
 					matiere : <input class="form-control" name="matiere" type="text">   <br/>
+					<div ng-controller="MainCtrl">
+						<select class="selectpicker" type="text" name="groupe" id="filtre" ng-model="selectedItem">
+							<option style="display:none" value="">Selectionner établissement</option>
+							<option ng-repeat="item in donnees | filter:item.type = 'etablissement'" value="{{item.uri}}">{{item.label}}</option>
+						</select>   
+					</div>
 					<input class="form-control" id="submit" name="departement" type="submit" value="soumettre">
 					</form>
 

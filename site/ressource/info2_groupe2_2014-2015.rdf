@@ -9,6 +9,8 @@
     <groupe:promo rdf:resource="http://localhost/~MBP-0/IUT_LD/site/ressource/info2_2014-2015.rdf"/>
     <rdfs:label>info2_groupe2_2014-2015</rdfs:label>
     <groupe:etudiant rdf:resource="http://localhost/~MBP-0/IUT_LD/site/ressource/E126549D.rdf"/>
+    <groupe:etudiant rdf:resource="http://localhost/~MBP-0/IUT_LD/site/ressource/E126549Z.rdf"/>
+    <groupe:etudiant rdf:resource="http://localhost/~MBP-0/IUT_LD/site/ressource/E126529D.rdf"/>
   </groupe:Groupe>
 
 </rdf:RDF>

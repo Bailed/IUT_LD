@@ -27,10 +27,9 @@ class ControleurAffichage {
 
           $graphGroupe = EasyRdf_Graph::newAndLoad($groupe);
           $arrayGroupe = array ('nom' => (string) $graphGroupe -> getLiteral($groupe, "groupe:nom"), 'uri' => (string) $groupe); 
-          
+          print_r($arrayGroupe);
           $EtudiantJson = array('etudiant' => array('id' =>(string) $id, 'nom' => (string) $nom, 'prenom' => (string) $prenom,'groupe' => $arrayGroupe)) ;  
-
-          return json_encode($EtudiantJson);  
+            return $EtudiantJson;  
 
         } elseif ($graph->type() == 'professeur:Professeur') {
             $id = $graph -> label($uri);

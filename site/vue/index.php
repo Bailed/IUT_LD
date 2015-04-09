@@ -2,8 +2,9 @@
 include 'model/model.php';
 include 'includes/head.php';
 include 'includes/nav.php';
+
 ?>
-<div class="main clearfix">
+<div class="main clearfix" div ng-controller="MainCtrl">
 	<form id="nl-form" class="nl-form" action="" methode="GET">
 		Je souhaite ajouter 
 		<select name="ajout">
@@ -18,7 +19,11 @@ include 'includes/nav.php';
 		<div class="nl-overlay"></div>
 	</form>
 </div>
-<?php
+<script src="vue/js/nlform.js"></script>
+<script type="text/javascript">
+	var nlform = new NLForm( document.getElementById( 'nl-form' ) );	
+</script>
+<?
 include 'includes/footer.php';
 include 'includes/script.php';
 include 'includes/foot.php';

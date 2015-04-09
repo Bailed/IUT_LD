@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="vue/css/bootstrap-select.min.css">	
 	<link rel="stylesheet" type="text/css" href="vue/css/default.css" />
 	<link rel="stylesheet" type="text/css" href="vue/css/component.css" />
-	<scjript src="vue/js/modernizr.custom.js"></script>	
+	<script src="vue/js/modernizr.custom.js"></script>	
+	
 </head>
 	<body data-ng-app="myApp">
