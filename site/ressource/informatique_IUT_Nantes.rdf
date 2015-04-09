@@ -3,16 +3,11 @@
          xmlns:departement="http://localhost/departement"
          xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
 
-  <departement:Departement rdf:about="http://localhost/IUT_LD/site/ressource/informatique_IUT_Nantes.rdf">
+  <departement:Departement rdf:about="http://localhost/~MBP-0/IUT_LD/site/ressource/informatique_IUT_NANTES.rdf">
     <departement:nom>informatique</departement:nom>
-    <departement:etablissement rdf:resource="http://localhost/IUT_LD/site/ressource/IUT_Nantes.rdf"/>
-    <rdfs:label>informatique_IUT_Nantes</rdfs:label>
-    <departement:promo rdf:resource="http://localhost/IUT_LD/site/ressource/info1_2014-2015.rdf"/>
-    <departement:promo rdf:resource="http://localhost/IUT_LD/site/ressource/info2_2014-2015.rdf"/>
-    <departement:professeur rdf:resource="http://localhost/IUT_LD/site/ressource/Nachouki_Gilles.rdf"/>
-    <departement:professeur rdf:resource="http://localhost/IUT_LD/site/ressource/REMM_Jean-Francois.rdf"/>
-    <departement:matiere>BD</departement:matiere>
-    <departement:matiere>programmation</departement:matiere>
+    <departement:etablissement rdf:resource="http://localhost/~MBP-0/IUT_LD/site/ressource/IUT_NANTES.rdf"/>
+    <rdfs:label>informatique_IUT_NANTES</rdfs:label>
+    <departement:promo rdf:resource="http://localhost/~MBP-0/IUT_LD/site/ressource/info2_2014-2015.rdf"/>
   </departement:Departement>
 
 </rdf:RDF>

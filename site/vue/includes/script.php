@@ -1,6 +1,11 @@
 <script src="vue/js/libs/jquery/dist/jquery.min.js"></script>
 <script src="vue/js/libs/jquery.cookie.js"></script>
 <script src="vue/js/bootstrap-select.js"></script>
+<script type="text/javascript" src="vue/js/libs/angular/angular.min.js" chartset="utf-8"></script>
+<script type="text/javascript" src="vue/js/libs/angular-resource/angular-resource.min.js" charset="utf-8"></script>
+<script src="vue/js/app.js" type="text/javascript"></script>
+<script src="vue/js/service.js" type="text/javascript"></script>
+<script src="vue/js/controller.js" type="text/javascript"></script>
 <script type="text/javascript">
 (function($){
 

@@ -18,11 +18,7 @@
 									<label>ID :</label> <input class="form-control" id="IdentifiantEtudiant" name="IdentifiantEtudiant" type="text">   <br/>
 									<label>nom :</label> <input class="form-control" name="nom" type="text">   <br/>
 									<label>prénom :</label> <input class="form-control" name="prenom" type="text">   <br/>
-									<select class="selectpicker" name="groupe">
-										<option>http://localhost/~MBP-0/IUT_LD/site/ressource/info1goupe1_2014-2015.rdf</option>
-										<option>groupe 2</option>
-										<option>groupe 3</option>
-									</select><br>
+									<input class="form-control" name="groupe" type="text">
 									<input class="form-control" id="submit" name="etudiant" type="submit" value="soumettre">
 							
 								</form>
@@ -49,6 +45,7 @@
 							<div class="col-md-4 text-center">	
 							<div class="form-group">					
 								<form action="index.php" method="post">
+								<input type="hidden" name="create" value="groupe">
 									nom : <input class="form-control" name="nom" type="text">   <br/>
 									annee : <input class="form-control" name="annee" type="text">   <br/>
 									promo : <input class="form-control" name="promo" type="text">   <br/>
@@ -78,6 +75,7 @@
 							<div class="col-md-4 text-center">	
 							<div class="form-group">					
 								<form action="index.php" method="post">
+								<input type="hidden" name="create" value="professeur">
 					nom : <input class="form-control" name="nom" type="text">   <br/>
 					prenom : <input class="form-control" name="prenom" type="text">   <br/>
 					matiere : <input class="form-control" name="matiere" type="text">   <br/>
@@ -108,6 +106,7 @@
 							<div class="col-md-4 text-center">	
 							<div class="form-group">					
 								<form action="index.php" method="post">
+								<input type="hidden" name="create" value="promo">
 					nom : <input class="form-control" name="nom" type="text">   <br/>
 					annee : <input class="form-control" name="annee" type="text">   <br/>
 					departement : <input class="form-control" name="departement" type="text">   <br/>
@@ -137,6 +136,7 @@
 							<div class="col-md-4 text-center">	
 							<div class="form-group">					
 								<form action="index.php" method="post">
+								<input type="hidden" name="create" value="departement">
 					nom : <input class="form-control" name="nom" type="text">   <br/>
 					etablissement : <input class="form-control" name="etablissementD" type="text">   <br/>
 					matiere : <input class="form-control" name="matiere" type="text">   <br/>
@@ -166,6 +166,7 @@
 							<div class="col-md-4 text-center">	
 							<div class="form-group">					
 								<form action="index.php" method="post">
+								<input type="hidden" name="create" value="etablissement">
 					nom : <input class="form-control" name="nom" type="text">   <br/>
 					adresse : <input class="form-control" name="adresse" type="text">   <br/>
 					ville : <input class="form-control" name="ville" type="text">   <br/>
