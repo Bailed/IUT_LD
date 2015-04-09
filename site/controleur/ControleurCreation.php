@@ -1,8 +1,8 @@
 <?php
 
 set_include_path(get_include_path() . PATH_SEPARATOR . 'modele/');
-	require_once "/../modele/EasyRdf.php";
-    require_once "/../modele/html_tag_helpers.php";
+	require_once "EasyRdf.php";
+    require_once "html_tag_helpers.php";
 
 
 class ControleurCreation {
@@ -84,6 +84,9 @@ class ControleurCreation {
 
 	// créer un professeur
 	public function creerProfesseur() { 
+
+		$uri = ($this->racine).$Nom_Ville.".rdf"; 
+
 		$Nom_Prenom = null; 
 		if (isset($_POST['nom']) && isset($_POST['prenom'])) {
 			$Nom_Prenom = strtoupper($_POST['nom'])."_".ucfirst(strtolower($_POST['prenom']));
