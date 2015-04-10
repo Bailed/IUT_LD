@@ -34,10 +34,9 @@ legend {
 
 .malist {
 	list-style-type: none;
-	width:450px;
 	margin-left:auto;
 	margin-right:auto;
-	background-color: #f2f2f2;
+	background-color: #c0392b;
 	text-align: center;
 	padding:2em;
 	color:black;
@@ -77,4 +76,16 @@ color: #000;
 }
 .cookie_btn a{
 	text-decoration: none;
+}
+
+.mysubmit {
+	background-color: rgb(52,72,92);
+  	box-shadow: none;
+  	border: none;
+  	color: #c0392b;
+  	display:inline;
+}
+
+ul {
+	list-style: none;
 }

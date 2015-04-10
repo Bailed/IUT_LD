@@ -3,14 +3,14 @@
          xmlns:etablissement="http://localhost/etablissement"
          xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
 
-  <etablissement:Etablissement rdf:about="http://localhost/~MBP-0/IUT_LD/site/ressource/IUT_NANTES.rdf">
+  <etablissement:Etablissement rdf:about="http://localhost/~MBP-0/IUT_LD/site/ressource/IUT_Nantes.rdf">
     <etablissement:nom>IUT</etablissement:nom>
-    <etablissement:adresse>3 RUE MARECHAL JOFFRE</etablissement:adresse>
-    <etablissement:ville>NANTES</etablissement:ville>
+    <etablissement:adresse>3 rue marechal joffre</etablissement:adresse>
+    <etablissement:ville>Nantes</etablissement:ville>
     <etablissement:codepostal>44000</etablissement:codepostal>
     <etablissement:departement>Loire Atlantique</etablissement:departement>
-    <etablissement:departement rdf:resource="http://localhost/~MBP-0/IUT_LD/site/ressource/informatique_IUT_NANTES.rdf"/>
-    <rdfs:label>IUT_NANTES</rdfs:label>
+    <etablissement:departement rdf:resource="http://localhost/~MBP-0/IUT_LD/site/ressource/GEA_IUT_Nantes.rdf"/>
+    <rdfs:label>IUT_Nantes</rdfs:label>
   </etablissement:Etablissement>
 
 </rdf:RDF>

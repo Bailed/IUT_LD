@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:professeur="http://localhost/professeur"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+  <professeur:Professeur rdf:about="http://localhost/~MBP-0/IUT_LD/site/ressource/MORIN_Emmanuel.rdf">
+    <professeur:nom>MORIN</professeur:nom>
+    <professeur:prenom>Emmanuel</professeur:prenom>
+    <professeur:matiere>Système</professeur:matiere>
+    <professeur:departement rdf:resource="http://localhost/~MBP-0/IUT_LD/site/ressource/Informatique_.rdf"/>
+    <rdfs:label>MORIN_Emmanuel</rdfs:label>
+  </professeur:Professeur>
+
+</rdf:RDF>

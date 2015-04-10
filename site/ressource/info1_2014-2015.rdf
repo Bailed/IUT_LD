@@ -3,11 +3,11 @@
          xmlns:promo="http://localhost/promo"
          xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
 
-  <promo:Promo rdf:about="http://localhost/~MBP-0/IUT_LD/site/ressource/info2_2014-2015.rdf">
-    <promo:nom>info2</promo:nom>
+  <promo:Promo rdf:about="http://localhost/~MBP-0/IUT_LD/site/ressource/info1_2014-2015.rdf">
+    <promo:nom>info1</promo:nom>
     <promo:annee>2014-2015</promo:annee>
     <promo:departement rdf:resource="http://localhost/~MBP-0/IUT_LD/site/ressource/Informatique_.rdf"/>
-    <rdfs:label>info2_2014-2015</rdfs:label>
+    <rdfs:label>info1_2014-2015</rdfs:label>
   </promo:Promo>
 
 </rdf:RDF>

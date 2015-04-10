@@ -5,16 +5,25 @@ include 'includes/nav.php';
 ?>
 <div class="container">
 	<div class="row">
-		<div class="col-md-12 text-center">
+	<div class="col-md-4"></div>
+		<div class="col-md-4 text-center">
 		<div data-ng-controller="MainCtrl">
 			<label><h2>Je cherche ... </h2></label>
-			<input type="text" name="filtre" id="filtre" placeholder="Un professeur, un étudiant, ..." data-ng-model="filtre.$">
+			<input type="text" name="filtre" id="filtre" class="form-control" data-ng-model="filtre.$">
 			
 				<ul class="malist">
-					<button  ng-click="test = {item.label}" class="elmaList" ng-repeat="item in donnees | filter:filtre | limitTo:3 ">{{item.label}}</button>
+					<li ng-click="test(item.type,item.uri,item.label)" class="elmaList" ng-repeat="item in donnees | filter:filtre | limitTo:3 "><a href="">{{item.label}}</a></li>
 				</ul>
 
-				test : {{test}}
+				Selélctionné : {{renvoi[2]}}
+			<form action="index.php" method="post">
+			<input type="hidden" name="affichage" value="true">
+			<input type="hidden" name="type" value="{{renvoi[0]}}">
+			<input type="hidden" name="uri" value="{{renvoi[1]}}">
+			<input class="form-control" type="submit">
+ 				
+			</form>
+	
 			</div>
 		</div>
 	</div>
