@@ -3,11 +3,11 @@
          xmlns:groupe="http://localhost/groupe"
          xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
 
-  <groupe:Groupe rdf:about="http://localhost/~MBP-0/IUT_LD/site/ressource/_groupe1_2014-2015.rdf">
+  <groupe:Groupe rdf:about="http://localhost/~MBP-0/IUT_LD/site/ressource/info1_groupe1_2014-2015.rdf">
     <groupe:nom>groupe1</groupe:nom>
     <groupe:annee>2014-2015</groupe:annee>
     <groupe:promo rdf:resource="http://localhost/~mbp-0/iut_ld/site/ressource/info1_2014-2015.rdf"/>
-    <rdfs:label>_groupe1_2014-2015</rdfs:label>
+    <rdfs:label>info1_groupe1_2014-2015</rdfs:label>
     <groupe:etudiant rdf:resource="http://localhost/~MBP-0/IUT_LD/site/ressource/E126549D.rdf"/>
   </groupe:Groupe>
 

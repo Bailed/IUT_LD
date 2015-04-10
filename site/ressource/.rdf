@@ -6,12 +6,12 @@
   <promo:Promo rdf:about="http://localhost/~MBP-0/IUT_LD/site/ressource/info1_2014-2015.rdf">
     <promo:nom>info1</promo:nom>
     <promo:annee>2014-2015</promo:annee>
-    <promo:departement rdf:resource="http://localhost/~MBP-0/IUT_LD/site/ressource/Informatique_.rdf"/>
+    <promo:departement rdf:resource="http://localhost/~MBP-0/IUT_LD/site/ressource/INFORMATIQUE_IUT_Nantes.rdf"/>
     <rdfs:label>info1_2014-2015</rdfs:label>
   </promo:Promo>
 
   <rdf:Description rdf:about="http://localhost/~mbp-0/iut_ld/site/ressource/info1_2014-2015.rdf">
-    <promo:groupe rdf:resource="http://localhost/~MBP-0/IUT_LD/site/ressource/_groupe1_2014-2015.rdf"/>
+    <promo:groupe rdf:resource="http://localhost/~MBP-0/IUT_LD/site/ressource/info1_groupe1_2014-2015.rdf"/>
   </rdf:Description>
 
 </rdf:RDF>

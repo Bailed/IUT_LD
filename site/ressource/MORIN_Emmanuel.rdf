@@ -6,8 +6,8 @@
   <professeur:Professeur rdf:about="http://localhost/~MBP-0/IUT_LD/site/ressource/MORIN_Emmanuel.rdf">
     <professeur:nom>MORIN</professeur:nom>
     <professeur:prenom>Emmanuel</professeur:prenom>
-    <professeur:matiere>Système</professeur:matiere>
-    <professeur:departement rdf:resource="http://localhost/~MBP-0/IUT_LD/site/ressource/Informatique_.rdf"/>
+    <professeur:matiere>Algo</professeur:matiere>
+    <professeur:departement rdf:resource="http://localhost/~MBP-0/IUT_LD/site/ressource/INFORMATIQUE_IUT_Nantes.rdf"/>
     <rdfs:label>MORIN_Emmanuel</rdfs:label>
   </professeur:Professeur>
 

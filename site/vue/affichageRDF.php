@@ -77,7 +77,6 @@
 				require_once "controleur/ControleurAffichage.php";
 				$ctrl = new ControleurAffichage(); 
 				$rt = $ctrl -> afficher($uri);
-				print_r($rt);
 				?>	
 				<div class="container">
 					<div class="row">
@@ -138,14 +137,16 @@
 							</form></li>
 							<li><b>Groupe(s) : </b></li>
 						
-						<?php	foreach ($rt['groupe'] as $row) {
+						<?php	foreach ($rt['groupe'] as $rows) {
+									
 							echo '						
 							<li><form action="index.php" method="post">
 								<input type="hidden" name="affichage" value="true">
 								<input type="hidden" name="type" value="groupe">
-								<input type="hidden" name="uri" value="'.$row['uri'].'">
-								<input class="mysubmit" type="submit" value="'.$row['nom'].'">
+								<input type="hidden" name="uri" value="'.$rows['uri'].'">
+								<input class="mysubmit" type="submit" value="'.$rows['nom'].'">
 							</form></li>';
+							
 						}
 						?>
 					</div>						
@@ -165,7 +166,6 @@
 				require_once "controleur/ControleurAffichage.php";
 				$ctrl = new ControleurAffichage(); 
 				$rt = $ctrl -> afficher($uri);
-				print_r($rt);
 				?>	
 				<div class="container">
 					<div class="row">
@@ -238,6 +238,17 @@
 							<li><b>Ville: </b><?php print $rt['ville'] ?></li>
 							<li><b>Code Postal </b><?php print $rt['codePostal'] ?></li>
 							<li><b>Département </b><?php print $rt['departement'] ?></li>
+							<li><b>Formation(s) : </b></li>
+						<?php	foreach ($rt['dep'] as $row) {
+							echo '						
+							<li><form action="index.php" method="post">
+								<input type="hidden" name="affichage" value="true">
+								<input type="hidden" name="type" value="departement">
+								<input type="hidden" name="uri" value="'.$row['uri'].'">
+								<input class="mysubmit" type="submit" value="'.$row['nom'].'">
+							</form></li>';
+						}
+						?>
 							
 					</div>						
 					</div>

@@ -3,14 +3,13 @@
          xmlns:departement="http://localhost/departement"
          xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
 
-  <departement:Departement rdf:about="http://localhost/~MBP-0/IUT_LD/site/ressource/Informatique_.rdf">
-    <departement:nom>Informatique</departement:nom>
-    <departement:etablissement rdf:resource="http://localhost/~MBP-0/IUT_LD/site/ressource/IUT_NANTES.rdf"/>
-    <rdfs:label>Informatique_</rdfs:label>
+  <departement:Departement rdf:about="http://localhost/~MBP-0/IUT_LD/site/ressource/INFORMATIQUE_IUT_Nantes.rdf">
+    <departement:nom>INFORMATIQUE</departement:nom>
+    <departement:etablissement rdf:resource="http://localhost/~MBP-0/IUT_LD/site/ressource/IUT_Nantes.rdf"/>
+    <rdfs:label>INFORMATIQUE_IUT_Nantes</rdfs:label>
     <departement:promo rdf:resource="http://localhost/~MBP-0/IUT_LD/site/ressource/info1_2014-2015.rdf"/>
-    <departement:promo rdf:resource="http://localhost/~MBP-0/IUT_LD/site/ressource/info2_2014-2015.rdf"/>
     <departement:professeur rdf:resource="http://localhost/~MBP-0/IUT_LD/site/ressource/MORIN_Emmanuel.rdf"/>
-    <departement:matiere>Système</departement:matiere>
+    <departement:matiere>Algo</departement:matiere>
   </departement:Departement>
 
 </rdf:RDF>

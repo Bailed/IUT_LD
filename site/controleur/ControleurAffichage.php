@@ -27,7 +27,7 @@ class ControleurAffichage {
 
           $graphGroupe = EasyRdf_Graph::newAndLoad($groupe);
           $arrayGroupe = array ('nom' => (string) $graphGroupe -> getLiteral($groupe, "groupe:nom"), 'uri' => (string) $groupe); 
-         $EtudiantJson = array('etudiant' => array('id' =>(string) $id, 'nom' => (string) $nom, 'prenom' => (string) $prenom,'groupe' => $arrayGroupe));  
+        $EtudiantJson = array('etudiant' => array('id' =>(string) $id, 'nom' => (string) $nom, 'prenom' => (string) $prenom,'groupe' => $arrayGroupe));  
             
             $reponse = array('type' => 'etu','id' => (string) $id, 'nom' => (string) $nom, 'prenom' => (string) $prenom, 'groupe' => (string) $arrayGroupe['nom'], 'uri' => (string) $arrayGroupe['uri']);
 
@@ -63,7 +63,6 @@ class ControleurAffichage {
                 $arrayEtudiant = array ('nom' => (string) (($graphEtudiant -> getLiteral($etudiant, "etudiant:nom"))." ".($graphEtudiant -> getLiteral($etudiant, "etudiant:prenom"))), 'uri' => (string) $etudiant); 
                 array_push($listEtudiant, $arrayEtudiant);
             }
-            print_r($arrayPromo);
 
             $groupeJson = array('type' => 'groupe','id' => (string)$id, 'nom' => (string)$nom, 'annee' => (string)$annee, 'nom_promo' => (string) $arrayPromo['nom'], 'uri_promo' =>(string) $arrayPromo['uri'], 'etudiant' => $listEtudiant ); 
 
@@ -85,6 +84,7 @@ class ControleurAffichage {
                 $graphGroupe = EasyRdf_Graph::newAndLoad($groupe);
                 $arrayGroupe = array ('nom' => (string) $graphGroupe -> getLiteral($groupe, "groupe:nom"), 'uri' => (string) $groupe); 
                 array_push($listGroupe, $arrayGroupe);
+
             }
 
             $promoJson = array('type' => 'promo','id' => (string)$id, 'nom' => (string)$nom, 'annee' => (string)$annee, 'departement_nom' => (string) $arrayDepartement['nom'], 'departement_uri' => (string) $arrayDepartement['uri'], 'groupe' => $listGroupe ); 
@@ -98,7 +98,6 @@ class ControleurAffichage {
 
             $graphEtablissement = EasyRdf_Graph::newAndLoad($etablissement);
             $arrayEtablissement = array ('nom' => (string) $graphEtablissement -> getLiteral($etablissement, "etablissement:nom"), 'uri' => (string) $etablissement); 
-
             $listMatiere = array(); 
 
             foreach (($graph->all($uri,'departement:matiere')) as $matiere) {
@@ -134,11 +133,18 @@ class ControleurAffichage {
             $adresse = $graph->getLiteral($uri, "etablissement:adresse") ;
             $ville = $graph->getLiteral($uri, "etablissement:ville") ;
             $CP = $graph->getLiteral($uri, "etablissement:codepostal") ;
-            $dep = $graph->getLiteral($uri, "etablissement:departement") ;
+            $depa = $graph->getLiteral($uri, "etablissement:departement") ;
             
+            $listDep = array(); 
+
+            foreach (($graph->all($uri,'etablissement:departementF')) as $dep) {
+                $graphdep = EasyRdf_Graph::newAndLoad($dep);
+                $arrayDep = array ('nom' => (string) $graphdep -> getLiteral($dep,'departement:nom'), 'uri' => (string) $dep); 
+                array_push($listDep, $arrayDep);
+            }
             
 
-            $etJson = array('type' => 'etab','id' => (string)$id, 'nom' => (string)$nom, 'adresse' => (string)$adresse, 'ville' => (string)$ville, 'codePostal' => (string)$CP, 'departement' => (string)$dep ); 
+            $etJson = array('type' => 'etab','id' => (string)$id, 'nom' => (string)$nom, 'adresse' => (string)$adresse, 'ville' => (string)$ville, 'codePostal' => (string)$CP, 'departement' => (string)$depa, 'dep' => $listDep ); 
 
             return $etJson;
             

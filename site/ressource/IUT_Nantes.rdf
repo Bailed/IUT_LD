@@ -9,7 +9,7 @@
     <etablissement:ville>Nantes</etablissement:ville>
     <etablissement:codepostal>44000</etablissement:codepostal>
     <etablissement:departement>Loire Atlantique</etablissement:departement>
-    <etablissement:departement rdf:resource="http://localhost/~MBP-0/IUT_LD/site/ressource/GEA_IUT_Nantes.rdf"/>
+    <etablissement:departementF rdf:resource="http://localhost/~MBP-0/IUT_LD/site/ressource/INFORMATIQUE_IUT_Nantes.rdf"/>
     <rdfs:label>IUT_Nantes</rdfs:label>
   </etablissement:Etablissement>
 

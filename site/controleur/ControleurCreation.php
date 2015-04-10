@@ -75,7 +75,7 @@ class ControleurCreation {
 
 				$file = 'ressource/bibli.json'; 
 				$biblio = json_decode(file_get_contents($file));
-				$ajout = array ('type' => "etudiant", 'label' => $idetu, 'nom' => strtoupper($_POST['nom'])." ".ucfirst(strtolower($_POST['prenom'])),'uri' => $uri);
+				$ajout = array ('type' => "etudiant", 'nom' => $idetu, 'label' => strtoupper($_POST['nom'])." ".ucfirst(strtolower($_POST['prenom'])),'uri' => $uri);
 				array_push($biblio, $ajout); 
 				file_put_contents($file, json_encode($biblio));
 			}			 
@@ -164,9 +164,9 @@ class ControleurCreation {
 	public function creerGroupe() {  
 		$Nom_Annee = null; 
 		$graph = new EasyRdf_Graph();
-		$promo = $graph -> resource(strtolower($_POST['promo']));
+		$promo = $graph -> resource($_POST['promo']);
 		$graphAjout = EasyRdf_Graph::newAndLoad($promo);
-		$idPromo = $graphAjout->getLiteral(strtolower($_POST["promo"]), "promo:nom");
+		$idPromo = $graphAjout->getLiteral($_POST["promo"], "promo:nom");
 
 		if (isset($_POST['nom']) && isset($_POST['annee'])) {
 			$Nom_Annee = $idPromo."_".strtolower($_POST['nom'])."_".$_POST['annee'];

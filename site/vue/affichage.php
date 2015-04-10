@@ -157,7 +157,6 @@
 								<form action="index.php" method="post">
 								<input type="hidden" name="create" value="departement">
 					nom : <input class="form-control" name="nom" type="text">   <br/>
-					matiere : <input class="form-control" name="matiere" type="text">   <br/>
 					<div ng-controller="MainCtrl">
 						<select class="selectpicker" type="text" name="etablissementD" id="filtre" ng-model="selectedItem">
 							<option style="display:none" value="">Selectionner établissement</option>

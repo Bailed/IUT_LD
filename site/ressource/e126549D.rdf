@@ -7,7 +7,7 @@
     <etudiant:nom>BESSON</etudiant:nom>
     <etudiant:prenom>Maxime</etudiant:prenom>
     <etudiant:id>E126549D</etudiant:id>
-    <etudiant:groupe rdf:resource="http://localhost/~MBP-0/IUT_LD/site/ressource/_groupe1_2014-2015.rdf"/>
+    <etudiant:groupe rdf:resource="http://localhost/~MBP-0/IUT_LD/site/ressource/info1_groupe1_2014-2015.rdf"/>
     <rdfs:label>E126549D</rdfs:label>
   </etudiant:Etudiant>
 
