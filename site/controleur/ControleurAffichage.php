@@ -27,9 +27,11 @@ class ControleurAffichage {
 
           $graphGroupe = EasyRdf_Graph::newAndLoad($groupe);
           $arrayGroupe = array ('nom' => (string) $graphGroupe -> getLiteral($groupe, "groupe:nom"), 'uri' => (string) $groupe); 
-          print_r($arrayGroupe);
-          $EtudiantJson = array('etudiant' => array('id' =>(string) $id, 'nom' => (string) $nom, 'prenom' => (string) $prenom,'groupe' => $arrayGroupe)) ;  
-            return $EtudiantJson;  
+         $EtudiantJson = array('etudiant' => array('id' =>(string) $id, 'nom' => (string) $nom, 'prenom' => (string) $prenom,'groupe' => $arrayGroupe));  
+            
+            $reponse = array('type' => 'etu','id' => (string) $id, 'nom' => (string) $nom, 'prenom' => (string) $prenom, 'groupe' => (string) $arrayGroupe['nom'], 'uri' => (string) $arrayGroupe['uri']);
+
+            return $reponse;  
 
         } elseif ($graph->type() == 'professeur:Professeur') {
             $id = $graph -> label($uri);
@@ -41,9 +43,9 @@ class ControleurAffichage {
             $graphDepartement = EasyRdf_Graph::newAndLoad($departement);
             $arrayDepartement = array ('nom' => (string) $graphDepartement -> getLiteral($departement, "departement:nom"), 'uri' => (string) $departement); 
 
-            $profJson = array('professeur' => array('id' => (string)$id, 'nom' => (string)$nom, 'prenom' => (string)$prenom, 'matiere' => (string)$matiere, 'departement' => $arrayDepartement)); 
+           $reponse = array('type' => 'prof','id' => (string) $id, 'nom' => (string) $nom, 'prenom' => (string) $prenom, 'matiere' => (string) $matiere, 'dep' => (string) $arrayDepartement['nom'], 'uri' => (string) $arrayDepartement['uri']);
 
-            return json_encode($profJson);  
+            return $reponse;   
 
         } elseif ($graph->type() == 'groupe:Groupe') {
             $id = $graph -> label($uri);
@@ -62,9 +64,9 @@ class ControleurAffichage {
                 array_push($listEtudiant, $arrayEtudiant);
             }
 
-            $groupeJson = array('groupe' => array('id' => (string)$id, 'nom' => (string)$nom, 'annee' => (string)$annee, 'promo' => $arrayPromo, 'etudiant' => $listEtudiant )); 
+            $groupeJson = array('type' => 'groupe','groupe' => array('id' => (string)$id, 'nom' => (string)$nom, 'annee' => (string)$annee, 'promo' => $arrayPromo, 'etudiant' => $listEtudiant )); 
 
-            return json_encode($groupeJson);
+            return $groupeJson;
 
 
         } elseif ($graph->type() == 'promo:Promo') {
@@ -84,9 +86,9 @@ class ControleurAffichage {
                 array_push($listGroupe, $arrayGroupe);
             }
 
-            $promoJson = array('promo' => array('id' => (string)$id, 'nom' => (string)$nom, 'annee' => (string)$annee, 'departement' => $arrayDepartement, 'groupe' => $listGroupe )); 
+            $promoJson = array('type' => 'promo','promo' => array('id' => (string)$id, 'nom' => (string)$nom, 'annee' => (string)$annee, 'departement' => $arrayDepartement, 'groupe' => $listGroupe )); 
 
-            return json_encode($promoJson);
+            return $promoJson;
 
         } elseif ($graph->type() == 'departement:Departement') {
             $id = $graph -> label($uri);
@@ -120,9 +122,9 @@ class ControleurAffichage {
             }
 
 
-            $depJson = array('departement' => array('id' => (string)$id, 'nom' => (string)$nom, 'etablissement' => $arrayEtablissement, 'matiere' => $listMatiere, 'professeur' => $listProf, 'promo' => $listPromo )); 
+            $depJson = array('type' => 'dep','departement' => array('id' => (string)$id, 'nom' => (string)$nom, 'etablissement' => $arrayEtablissement, 'matiere' => $listMatiere, 'professeur' => $listProf, 'promo' => $listPromo )); 
 
-            return json_encode($depJson);
+            return $depJson;
 
   
         } elseif ($graph->type() == 'etablissement:Etablissement') {
@@ -134,9 +136,9 @@ class ControleurAffichage {
             $dep = $graph->getLiteral($uri, "etablissement:departement") ;
             
 
-            $etJson = array('etablissement' => array('id' => (string)$id, 'nom' => (string)$nom, 'adresse' => (string)$adresse, 'ville' => (string)$ville, 'codePostal' => (string)$CP, 'departement' => (string)$dep )); 
+            $etJson = array('type' => 'etab','etablissement' => array('id' => (string)$id, 'nom' => (string)$nom, 'adresse' => (string)$adresse, 'ville' => (string)$ville, 'codePostal' => (string)$CP, 'departement' => (string)$dep )); 
 
-            return json_encode($etJson);
+            return $etJson;
             
 
             $etablissement = $graph->resource();

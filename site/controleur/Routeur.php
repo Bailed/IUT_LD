@@ -6,6 +6,9 @@ set_include_path(get_include_path() . PATH_SEPARATOR . 'controleur/');
 
 set_include_path(get_include_path() . PATH_SEPARATOR . 'vue/');
 	require_once "vue/affichage.php";
+	require_once "vue/affichageRDF.php";
+
+
 
 
 
@@ -14,13 +17,15 @@ set_include_path(get_include_path() . PATH_SEPARATOR . 'vue/');
 		private $ctrlCreation;
 		/*private $ctrlAffichage;*/
 		private $affichage;
+		private $affichageRDF;
 
 
 		function __construct()
 		{
 			/*$this->ctrlAffichage = new ControleurAffichage();*/
 			$this->ctrlCreation = new ControleurCreation(); 			
-			$this->affichage = new affichage();		
+			$this->affichage = new affichage();
+			$this->affichageRDF = new affichageRDF();		
 
 		}
 
@@ -66,6 +71,30 @@ set_include_path(get_include_path() . PATH_SEPARATOR . 'vue/');
 				elseif ($_POST["create"] == "departement") {
 						$this->ctrlCreation->creerDepartement();
 				}
+
+			}
+			elseif(isset($_POST['affichage'])) {
+				if ($_POST['type'] == 'etudiant') {
+					$this->affichageRDF->afficheEtu($_POST['uri']);
+				}
+				elseif ($_POST['type'] == 'etablissement') {
+					$this->affichageRDF->afficheEtab($_POST['uri']);
+				}
+				elseif ($_POST['type'] == 'departement') {
+					$this->affichageRDF->afficheDep($_POST['uri']);
+				}
+				elseif ($_POST['type'] == 'promo') {
+					$this->affichageRDF->affichePromo($_POST['uri']);
+				}
+				elseif ($_POST['type'] == 'groupe') {
+					$this->affichageRDF->afficheGroupe($_POST['uri']);
+				}
+				elseif ($_POST['type'] == 'professeur') {
+					$this->affichageRDF->afficheProf($_POST['uri']);
+				}
+				else {
+					$this->affichage->index();
+				}				
 
 			}
 

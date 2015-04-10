@@ -34,6 +34,17 @@ legend {
 
 .malist {
 	list-style-type: none;
+	width:450px;
+	margin-left:auto;
+	margin-right:auto;
+	background-color: #f2f2f2;
+	text-align: center;
+	padding:2em;
+	color:black;
+}
+
+.malist ul li a{
+	color:black;
 }
 
 .malist li a {
